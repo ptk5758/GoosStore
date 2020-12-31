@@ -18,5 +18,10 @@ public interface UserDAO {
 	 */
 	public List<UserVO> getUserList();
 	
+	
+	/**
+	 * 유저의 레벨 을 세팅하는 메서드입니다
+	 * @param userLevel userUUID
+	 */
 	public void setUserLevel(UserVO user);
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.UserMapper">
+	<insert id="signup">
+		insert into user (userName,userID,userPassword,userSteamID,userNickName,userPhone,userEmail) values (#{userName},#{userID},#{userPassword},#{userSteamID},#{userNickName},#{userPhone},#{userEmail})
+	</insert>
+	<select id="loginUser" resultType="UserVO">
+		select * from user where userID=#{userID} and userPassword=#{userPassword}
+	</select>
+	<select id="IDsearch" resultType="UserVO">
+		select * from user where userName=#{userName} and userEmail=#{userEmail}
+	</select>
+	<select id="passwordsearch" resultType="UserVO">
+		select * from user where userName=#{userName} and userID=#{userID} and userEmail=#{userEmail}
+	</select>
+	<update id="passwordUpdate">
+		update user set userPassword=#{userPassword} where userID=#{userID}
+	</update>
+	<select id="getUserOne" resultType="UserVO">
+		select * from user where userID=#{userID}
+	</select>
+	<select id="getUserList" resultType="UserVO">
+		select * from user
+	</select>
+	<update id="setUserLevel">
+		update user set userLevel=#{userLevel} where userUUID=#{userUUID}
+	</update>
+</mapper>

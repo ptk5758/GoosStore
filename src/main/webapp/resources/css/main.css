@@ -1,0 +1,42 @@
+@charset "UTF-8";
+body{
+	padding: 0;
+	/* background: linear-gradient(#000000, #fff); */
+	background: linear-gradient(rgb(240, 200, 254),rgb(204, 255, 245));
+	width: 1200px;
+	margin: 0 auto;
+}
+/*-------------------------body 안부터 시작--------------------------------- */
+.container{
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 15px; 
+}
+/*------------------------- 헤더 --------------------------------- */
+.top{
+	display: flex;
+	justify-content: space-between;
+}
+.top_Title{
+	font-size: 38px;
+	font-weight: bold;
+	align-self: center;
+	cursor: pointer;
+}
+.top_Signup{
+	display: flex;
+	align-self: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+}
+.top_Signup_Item{
+	margin: 15px;
+	padding: 8px;
+	cursor: pointer;
+}
+.middle{
+	min-height: 800px;
+	width: 95%;
+	margin: 0 auto;
+}

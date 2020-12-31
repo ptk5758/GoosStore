@@ -1,0 +1,260 @@
+@charset "UTF-8";
+/*회원 시스템에 관련됀 문서들의 CSS*/
+
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotflight.woff");
+}
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotfbold.woff");
+	font-weight: bold;
+}
+/* ---------------------------로그인----------------------------- */
+.loginContainer{
+	background-color: #ff6666;
+	width: 60%;
+	margin: 0 auto;
+	height: 350px;
+	border-radius: 15px;
+	box-shadow: 8px 8px 8px -3px;/*-----가로--세로--그림자짙음--그림자짙음정도-*/
+
+}
+.loginBorder{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 320px;
+	justify-content: center;
+	background-color: #fff;
+	border-radius: 8px 8px 0px 0px
+}
+.loginInput{
+	margin: 8px;
+}
+.loginInput > input{
+	font-size: 18px;
+	font-weight: bold;
+	width: 450px;
+	height: 2em;
+	border-radius: 5px;
+	padding-left: 1.5em;
+}
+.loginButton{
+	display: flex;
+	cursor: pointer;
+	background-color: #373737;
+	border: 2px solid#000000;
+	border-bottom: 0px solid#000000;
+	margin-top: 10px;
+}
+.loginButton div{
+	width: 448px;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+	border: 0px solid#000000;
+	border-radius: 5px;
+	background: linear-gradient(to right, rgb(240, 200, 254),rgb(204, 255, 245));
+	-webkit-background-clip: text; /* 백그라운드 컬러를 text 에만 적용하는 속성 */
+	color: transparent;/* 글자를 투명하게 만드는 속성 */
+	padding: 5px 0px;
+	font-family: "넥슨고딕";
+	letter-spacing: 5px; /* 자간 속성 */
+}
+.loginoption{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 2px;
+	width: 452px;
+	margin: 0 auto;
+	color: #000000;
+}
+.loginoption_Item{
+	cursor: pointer;
+	text-align: center;
+	border: 0px solid#000000;
+	background-color: #bce0f3;
+	padding: 8px;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	border-radius: 0px 0px 8px 8px;
+}
+.loginoption_Item:hover {
+	background-color: #e5d8fb;
+}
+/* ---------------------------회원가입---------------------------- */
+.signupContainer{
+	background-color: #ff6666;
+	width: 60%;
+	margin: 0 auto;
+	height: 900px;
+	border-radius: 15px;
+	box-shadow: 8px 8px 8px -3px;/*-----가로--세로--그림자짙음--그림자짙음정도-*/
+}
+.signupBorder{
+	display: flex;
+	flex-direction: column;
+	height: 870px;
+	/* justify-content: center; */
+	background-color: #fff;
+	border-radius: 8px 8px 0px 0px;
+}
+.signupItem{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+.signupText{
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 9px 0px;
+}
+.signupInput{
+	display: flex;
+}
+.signupInput input{
+	font-size: 18px;
+	width: 280px;
+	padding: 5px;
+	/* padding-left: 1em; */
+	
+}
+.signupIDCheck{
+	align-self: center;
+	margin-left: 35px;
+	font-weight: bold;
+	border: 2px solid#000000;
+	padding: 5px; 
+	border-radius: 10px;
+}
+.signupButton{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 35px;
+	
+}
+.signupButton input{
+	font-size: 22px;
+	width: 100%;
+	padding: 8px;
+	background-color: #2f3136;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+}
+.signupINFO{
+	align-self: flex-end;
+	/* border: 1px solid#000000; */
+	margin-left: 35px;
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+}
+/*---------------------아이디 검색결과 창--------------------  */
+.IDsearchAfterBorder{
+	font-size: 24px;
+	font-family: "넥슨고딕";
+	display: flex;
+	flex-direction: column;
+}
+.IDsearchAfterItem{
+	margin: 25px;
+}
+.IDsearchAfterItem_Text{
+	width: 120px;
+}
+.IDsearchAfterBorder_button{
+	width: 200px;
+	border: 2px solid#000000;
+	text-align: center;
+	letter-spacing: 3px;
+	padding: 8px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-family: "넥슨고딕";
+	font-weight: bold;
+	box-shadow: 4px 4px 3px;
+	color: #5a5a5a;
+}
+/*--------------------비밀번호  검색결과 창--------------------  */
+.PasswordsearchAfterBorder{
+	font-size: 22px;
+}
+.PasswordsearchAfterItem{
+	text-align: center;
+	margin: 15px;
+}
+.PasswordsearchAfterItem input{
+	width: 330px;
+	padding: 4px;
+	font-size: 18px;
+}
+.PasswordsearchAfterButton{
+	border: 2px solid#000000;
+	border-radius: 10px;
+	width: 330px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+/* ---------------------------마이페이지----------------------------- */
+
+.myPage{
+	background: linear-gradient(to right,rgb(210,250,255),rgb(230,250,255));
+	width: 80%;
+	margin: 0 auto;
+	height: 700px;
+	border-radius: 10px 10px 0px 0px;
+	box-shadow: 8px 8px 10px;
+}
+.myPage_UserName{
+	font-size: 24px;
+	font-family: "넥슨고딕";
+	font-weight: bold;
+	padding: 1em;
+}
+.myPage_Border{
+	background-color: #fff;
+	width: 100%;
+	height: 600px;
+	border-bottom: 1px solid#000000;
+	border-top: 1px solid#000000;
+}
+.myPage_Info{
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.myPage_Info_Item{
+	margin: 20px;
+}
+.myInfo_Text{
+	font-size: 22px;
+	font-family: "넥슨고딕";
+	font-weight: bold;
+	margin: 5px;
+}
+.myInfo_value{
+	font-size: 18px;
+	font-family: "넥슨고딕";
+	margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

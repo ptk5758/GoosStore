@@ -16,9 +16,7 @@ public interface UserDAO {
 	 * 유저 오브잭트를 리스트형태로 가져옵니다.
 	 * @return 리턴 유저리스트<UserVO>
 	 */
-	public List<UserVO> getUserList();
-	
-	
+	public List<UserVO> getUserList();	
 	/**
 	 * 유저의 레벨 을 세팅하는 메서드입니다
 	 * @param userLevel userUUID

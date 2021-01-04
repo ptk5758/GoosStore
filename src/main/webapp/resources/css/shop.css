@@ -1,8 +1,56 @@
 @charset "UTF-8";
 
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotflight.woff");
+}
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotfbold.woff");
+	font-weight: bold;
+}
+/*----------------샵메인-----------------------------  */
+
 .shopContainer{
 	background-color: #fff;
 	margin: 0 auto;
 	width: 90%;
 	min-height: 1200px;
+}
+.slideImg{
+	background-color: #d8edf8;
+	width: 100%;
+	height: 300px;
+}
+.gridborder{
+	padding: 35px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 50px;
+	justify-items: center;
+}
+.gridItem{
+	/* background-color: #e8ffca; */
+	width: 100%;
+	height: 300px;
+	border-radius: 50%;
+	position: relative;
+}
+.gridItem_img{
+	border-radius: 50%;
+	position: absolute ;
+	left: 14%;
+	top: 10%;
+}
+.gridItem_img img{
+	width: 220px;
+	height: 220px;
+}
+.gridItem_text{
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	margin-top: 10px;
+	
 }

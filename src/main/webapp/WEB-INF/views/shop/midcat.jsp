@@ -7,11 +7,11 @@
 			<div class="slide"></div>
 			<div class="midcatBorder">
 				<div class="midcatBorder_Top">
-					<div>의류</div>
-					<div>악세서리</div>
-					<div>케이스</div>
-					<div>생활용품</div>
-					<div>그립톡</div>
+					<div onclick="getCategory()">의류</div>
+					<div onclick="getCategory()">악세서리</div>
+					<div onclick="getCategory()">케이스</div>
+					<div onclick="getCategory()">생활용품</div>
+					<div onclick="getCategory()">그립톡</div>
 				</div>
 				<div class="midcatBorder_Content">
 					<div class="midcatBorder_Left">
@@ -30,6 +30,7 @@
 				alert(welcome);
 			}
 		</script>
+		<script src="/js/shopSystem.js"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		
 

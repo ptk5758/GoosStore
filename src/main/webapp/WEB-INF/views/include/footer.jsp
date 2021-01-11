@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 		<div class="footer">
 			<div>
+				<div>오늘날씨${todayweather}</div>
 				<div>색변경하기</div>
 				<div style="display: flex;">
 					<div>컬러1</div>

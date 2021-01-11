@@ -7,20 +7,25 @@
 			<div class="slide"></div>
 			<div class="midcatBorder">
 				<div class="midcatBorder_Top">
-					<div onclick="getCategory()">의류</div>
-					<div onclick="getCategory()">악세서리</div>
-					<div onclick="getCategory()">케이스</div>
-					<div onclick="getCategory()">생활용품</div>
-					<div onclick="getCategory()">그립톡</div>
+					<div onclick="getCategory('all')">전체</div>
+					<div onclick="getCategory('의류')">의류</div>
+					<div onclick="getCategory('악세서리')">악세서리</div>
+					<div onclick="getCategory('케이스')">케이스</div>
+					<div onclick="getCategory('생활용품')">생활용품</div>
 				</div>
 				<div class="midcatBorder_Content">
 					<div class="midcatBorder_Left">
-						<div>모자</div>
-						<div>후드티</div>
-						<div>신발</div>
-						<div>티셔츠</div>
+						<div>전체</div>
 					</div>
-					<div class="midcatBorder_Right">오</div>
+					<div class="midcatBorder_Right">
+						<c:forEach var="list" items="${shop}">
+							<div class="shopListItem" onclick="viewItem('${list.itemUID}')">
+								<div><img width="150" height="150" src="/img/woo.jpg"></div>
+								<div>${list.itemName}</div>
+								<div>${list.itemPrice}</div>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>

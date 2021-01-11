@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/css/shop.css">
 		<h1>SHOP페이지입니다</h1>
 		<div style="font-size: 24px; font-weight: bold" onclick="location.href='/shop/posting'">글등록하러가기</div>
+		<div style="font-size: 24px; font-weight: bold" onclick="location.href='/shop/posting2'">글등록하러가기2</div>
 			<div class="slide">		
 		</div>
 		<div class="categories">

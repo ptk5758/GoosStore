@@ -1,0 +1,64 @@
+@charset "UTF-8";
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotflight.woff");
+}
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotfbold.woff");
+	font-weight: bold;
+}
+
+/*------------------------------------------------  */
+.attend{
+	background-color: #4d4d4d;
+	min-height: 800px;
+	border-radius: 15px 15px 0px 0px;
+	background: linear-gradient(to right, #4d4d4d, #818181);
+	font-family: "넥슨고딕";
+}
+
+.attendBorder{
+	background-color: #fff;
+	height: 740px;
+}
+.attendTitle{
+	display: flex;
+	padding: 15px;
+}
+.attendTitle_Text{
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	align-self: center;
+}
+.selectDate{
+	display: flex;
+	width: 90%;
+}
+.selectDateItem{
+	background-color: #e48d4e; 
+	width: 90px;
+	height: 90px;
+	margin: 15px;
+	border-radius: 10%;
+}
+.dateMonth{
+	font-weight: bold;
+	padding: 5px;
+	color: #fff;
+}
+.dateDate{
+	float: right;
+	padding: 5px;
+	font-size: 32px;
+}
+
+
+
+
+
+
+
+
+

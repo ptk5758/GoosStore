@@ -6,4 +6,18 @@
 	<insert id="shopPosting">
 		insert into shop (itemName,itemTitle,itemMidCategory,itemBottomCategory,itemPrice,itemRef,itemCount,img_m,User) values (#{itemName},#{itemTitle},#{itemMidCategory},#{itemBottomCategory},#{itemPrice},#{itemRef},#{itemCount},#{img_m},#{User})
 	</insert>
+	<select id="getCategory" resultType="String">
+		select itemBottomCategory from shop where itemMidCategory = #{itemMidCategory} group by itemBottomCategory
+	</select>
+	<select id="getShopList" resultType="ShopVO">
+		select * from shop
+	</select>
+	<select id="getShopListMidSelect" resultType="ShopVO">
+		select * from shop where itemMidCategory = #{itemMidCategory} and not itemName = ""
+	</select>
+	
+	<select id="getShopListBottomSelect" resultType="ShopVO">
+		select * from shop where itemBottomCategory = #{itemBottomCategory} and not itemName = "";
+	</select>
+	
 </mapper>

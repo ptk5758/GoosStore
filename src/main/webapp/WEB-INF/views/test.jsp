@@ -5,8 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+	<style>
+		.dragField{
+			width: 500px;
+			height: 500px;
+			background-color: #eee;
+		}
+	</style>
 </head>
 <body>
-	<div>앍앍앍</div>
+	<div class="dragField">
+		<div>영역</div>
+		<img id="testimg">
+	</div>
 </body>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	
+	<script src="/js/test.js"></script>
 </html>

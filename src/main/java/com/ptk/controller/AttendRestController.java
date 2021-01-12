@@ -17,6 +17,8 @@ public class AttendRestController {
 	
 	private String[] ENG_MONTH = {"January","April","March","April","May","June","July","August","September","October","November","December"};
 	private String[] DAY_OF_WEEK = {"일","월","화","수","목","금","토","일"};
+	private String[] font_color = {"#454545","#454545","#454545","#454545","#454545","#6f6fff","#ff464a"};
+	//								   월		화			수		목			금		토			일
 
 	/**
 	 * 날짜를 가져오는 API입니다. 20% 진행
@@ -36,10 +38,12 @@ public class AttendRestController {
 		for(int i=0; i<5; i++) {
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
@@ -53,14 +57,16 @@ public class AttendRestController {
 		String result;
 		Calendar cal = Calendar.getInstance();
 		result = "{\"backDate\":[";
-		for(int i=0; i<5; i++) {
+		for(int i=0; i<2; i++) {
 			cal.add(Calendar.DATE, -1);
-			if(i+1 == 5) {
+			if(i+1 == 2) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 		}
 		logger.info(result);

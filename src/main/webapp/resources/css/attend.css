@@ -42,6 +42,7 @@
 	height: 90px;
 	margin: 15px;
 	border-radius: 10%;
+	border: 2px solid#000000;
 }
 .dateMonth{
 	font-weight: bold;
@@ -53,6 +54,11 @@
 	padding: 5px;
 	font-size: 24px;
 	justify-content: space-between;
+}
+.today{
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 3px;
 }
 
 

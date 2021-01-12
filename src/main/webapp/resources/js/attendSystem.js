@@ -3,8 +3,6 @@
  */
 
 	$(document).ready(function(){
-		console.log("gdgd");
-		
 		let result = "";
 		$.ajax({
 			url : "/restAttend/backDate",
@@ -16,7 +14,7 @@
 					result += `<div class="selectDateItem">
 											<div class="dateMonth">${backDateData[j].MONTH_ENG}</div>
 											<div class="dateDate">
-												<div><b>${backDateData[j].DAY_OF_WEEK}</b></div>
+												<div style="color: ${backDateData[j].font_color}"><b>${backDateData[j].DAY_OF_WEEK}</b></div>
 												<div>${backDateData[j].day}</div>
 											</div>
 								</div>`;
@@ -39,12 +37,13 @@
 							result += `<div class="selectDateItem">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
-												<div><b>${jsondata[i].DAY_OF_WEEK}</b></div>
+												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
 												<div>${jsondata[i].day}</div>
 											</div>
 										</div>`;
 						}
 						$('.selectDate').html(result);
+						today();
 					},
 					error : function(error){
 						console.log(error);
@@ -56,3 +55,40 @@
 			}
 		});
 	});
+	
+	let today = function(){
+		$(function(){
+			let R = 200;
+			let G = 200;
+			let B = 255;
+			$('.selectDate .selectDateItem:nth-child(3)').css("background-color",`rgb(${R},${G},${B})`);
+			$('.selectDate .selectDateItem:nth-child(3)').html($('.selectDate .selectDateItem:nth-child(3)').html()+"<span class='today'>ToDay~</span>");
+			for(let i=3; i<$('.selectDate .selectDateItem:nth-child(3)').nextAll().length+3; i++){
+				$('.selectDate .selectDateItem:nth-child('+i+')').next().css("background-color",`rgb(${R},${G},${B})`);
+				R += 15;
+				G += 15;
+			}
+			R = 200;
+			G = 200;
+			B = 255;
+			for(let i=3; i>=1; i--){
+				$('.selectDate .selectDateItem:nth-child('+i+')').prev().css("background-color",`rgb(${R},${G},${B})`);
+				R += 15;
+				G += 15;
+			}
+		});
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

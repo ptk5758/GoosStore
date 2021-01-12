@@ -17,6 +17,7 @@
 												<div style="color: ${backDateData[j].font_color}"><b>${backDateData[j].DAY_OF_WEEK}</b></div>
 												<div>${backDateData[j].day}</div>
 											</div>
+											<div class="todayCheckMember">4</div>
 								</div>`;
 				}
 				console.log("backdate");
@@ -40,6 +41,7 @@
 												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
 												<div>${jsondata[i].day}</div>
 											</div>
+											<div class="todayCheckMember">4</div>
 										</div>`;
 						}
 						$('.selectDate').html(result);
@@ -78,7 +80,29 @@
 			}
 		});
 	}
+	
+	let attendInsert = function(sessionID, sessionNickName){
+		console.log(sessionID,sessionNickName);
+		let userID = sessionID;
+		let userNickName = sessionNickName;
+		let content = document.getElementById('content').value;
+		let inputData = {userID:userID, userNickName:userNickName, content:content};
+		console.log(inputData);
+		$(function(){
+			$.ajax({
+				url: "/restAttend/attendInsert",
+				type: "post",
+				data: JSON.stringify(inputData),
+				contentType: "application/json; charset=UTF-8",
+				success : console.log("성공"),
+				error : function(error){
+					console.log(error);
+				}
+			});
+		});
+	}
 
+	
 	
 	
 	

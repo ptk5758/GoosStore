@@ -35,11 +35,12 @@
 .selectDate{
 	display: flex;
 	width: 90%;
+	margin: 0 auto;
 }
 .selectDateItem{
 	background-color: #e48d4e; 
-	width: 90px;
-	height: 90px;
+	width: 120px;
+	height: 120px;
 	margin: 15px;
 	border-radius: 10%;
 	border: 2px solid#000000;
@@ -56,11 +57,86 @@
 	justify-content: space-between;
 }
 .today{
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	padding-left: 3px;
 }
+.todayCheckMember{
+	padding: 5px;
+	font-size: 22px;
+	color: red;
+	font-weight: bold;
+	float: right;
+}
+.attendInputBorder{
+	background-color: #fff;
+	width: 90%;
+	margin: 0 auto;
+	padding: 15px;
+}
+.attendInputForm{
+	display: flex;
+	justify-content: center;
+}
+.attendUser{
+	font-size: 24px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	align-self: center;
+	width: 80%;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 0px solid#000000;
+	padding: 15px;
+}
+.attendInput{
+	
+}
+.attendInput > input{
+	width: 800px;
+	height: 60px;
+	font-size: 22px;
+	border: 1px solid#000000;
+	padding-left: 18px;
+}
+.attendButton > input{
+	width: 180px;
+	height: 60px;
+	background-color: #f26868;
+	color: #fff;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	font-size: 24px;
+	letter-spacing: 7px;
+	border: 0px solid#000000;
+	
+}
+.attendList{
+	width: 80%;
+	margin: 0 auto;
+}
+.attendListItem{
+	display: flex;
+	flex-direction: column;
+}
+.listUserINFO{
+	display: flex;
+	font-size: 18px;
+}
+.listUserINFO > div{	
+	margin: 5px;
+}
 
+.UserINFO_date{
+	font-size: 14px;
+	align-self: flex-end;
+}
+.listContent{
+	background-color: #efefef;
+	min-height: 45px;
+	font-size: 18px;
+	padding-left: 15px;
+}
 
 
 

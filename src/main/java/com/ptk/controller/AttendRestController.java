@@ -1,17 +1,28 @@
 package com.ptk.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.ptk.domain.AttendVO;
+import com.ptk.persistence.AttendDAO;
 
 @RestController
 @RequestMapping("/restAttend/")
 public class AttendRestController {
+	
+	@Inject
+	private AttendDAO dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AttendRestController.class);
 	
@@ -48,7 +59,7 @@ public class AttendRestController {
 			cal.add(Calendar.DATE, 1);
 			
 		}
-		logger.info(result);
+		//logger.info(result);
 		return result;
 	}
 	
@@ -69,8 +80,24 @@ public class AttendRestController {
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 		}
-		logger.info(result);
+		//logger.info(result);
 		return result;
+	}
+	@RequestMapping(value = "/attendInsert", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public void attendInsert(@RequestBody AttendVO attend) {
+		logger.info(attend.toString());
+		Date today = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			dao.insertAttend(attend);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private String getLastAttend(AttendVO attend) {
+		return "";
 	}
 }
 

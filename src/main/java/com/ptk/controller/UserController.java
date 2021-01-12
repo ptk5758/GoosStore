@@ -40,6 +40,7 @@ public class UserController {
 			session.setAttribute("sessionLevel", user.getUserLevel());
 			session.setAttribute("sessionID", user.getUserID());
 			session.setAttribute("sessionName", user.getUserName());
+			session.setAttribute("sessionNickName", user.getUserNickName());
 			return "redirect: /";
 		} catch (Exception e) {
 			logger.info("로그인에 실패하였습니다.");

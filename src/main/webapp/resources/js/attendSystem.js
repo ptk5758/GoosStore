@@ -84,6 +84,7 @@
 	let attendInsert = function(sessionID, sessionNickName){
 		console.log(sessionID,sessionNickName);
 		let userID = sessionID;
+		
 		let userNickName = sessionNickName;
 		let content = document.getElementById('content').value;
 		let inputData = {userID:userID, userNickName:userNickName, content:content};
@@ -94,7 +95,9 @@
 				type: "post",
 				data: JSON.stringify(inputData),
 				contentType: "application/json; charset=UTF-8",
-				success : console.log("성공"),
+				success : function(data){
+					alert(data);
+				},
 				error : function(error){
 					console.log(error);
 				}

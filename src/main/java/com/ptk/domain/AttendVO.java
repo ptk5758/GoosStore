@@ -8,9 +8,19 @@ public class AttendVO {
 	private String userNickName;
 	private String content;
 	private Date attendDate;
-	private Date lastAttendDate;
+	private String lastAttendDate;
 	private int attendRun;
 	
+	
+	
+	public String getLastAttendDate() {
+		return lastAttendDate;
+	}
+
+	public void setLastAttendDate(String lastAttendDate) {
+		this.lastAttendDate = lastAttendDate;
+	}
+
 	public String getUserID() {
 		return userID;
 	}
@@ -41,14 +51,6 @@ public class AttendVO {
 
 	public void setAttendDate(Date attendDate) {
 		this.attendDate = attendDate;
-	}
-
-	public Date getLastAttendDate() {
-		return lastAttendDate;
-	}
-
-	public void setLastAttendDate(Date lastAttendDate) {
-		this.lastAttendDate = lastAttendDate;
 	}
 
 	public int getAttendRun() {

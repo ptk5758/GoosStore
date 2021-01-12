@@ -43,5 +43,11 @@
 		</div>
 	</div>
 	<script src="/js/attendSystem.js"></script>
+	<script>
+		let welcome = "${msg}";
+		if(welcome != ''){
+			alert(welcome);
+		}
+	</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		

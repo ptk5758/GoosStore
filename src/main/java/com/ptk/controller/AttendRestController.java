@@ -3,11 +3,13 @@ package com.ptk.controller;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,20 +86,34 @@ public class AttendRestController {
 		return result;
 	}
 	@RequestMapping(value = "/attendInsert", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
-	public void attendInsert(@RequestBody AttendVO attend) {
+	public String attendInsert(@RequestBody AttendVO attend) {
 		logger.info(attend.toString());
-		Date today = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		try {
-			dao.insertAttend(attend);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(attend.getContent().equals("") || attend.getUserID().equals("") || attend.getUserNickName().equals("")) {
+			return "등록하는대 실패하였습니다.";
 		}
-		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String today = sdf.format(date);
+		try {
+			
+		  logger.info(lastAttend(attend)+"마지막 출석체크 일자");
+		  if(today.substring(0,10).equals(lastAttend(attend).substring(0, 10))) {
+			  return "오늘은 이미 출석체크를 하셨습니다."; 
+		  } else {
+			  attend.setLastAttendDate(today);
+			  dao.insertAttend(attend); 
+			  dao.updateLastAttend(attend); 
+		  }
+		} catch (Exception e) {
+			return "알수없는 오류로인해 등록에 실패하였습니다";
+		}
+		return "등록성공";
 	}
 	
-	private String getLastAttend(AttendVO attend) {
-		return "";
+	private String lastAttend(AttendVO attend) {
+		List<String> string = dao.getLastAttend(attend);
+		
+		return string.get(0);
 	}
 }
 

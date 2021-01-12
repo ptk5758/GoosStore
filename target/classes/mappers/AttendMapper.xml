@@ -6,5 +6,11 @@
 	<insert id="attend">
 		insert into attend (userID,userNickName,content) values (#{userID},#{userNickName},#{content})
 	</insert>
+	<select id="lastAttend" resultType="String">
+		select lastAttendDate from attend where userID = #{userID} order by lastAttendDate desc limit 1;
+	</select>
+	<update id="updateLastAttend">
+		update attend set lastAttendDate = #{lastAttendDate} where userID = #{userID}
+	</update>
 	
 </mapper>

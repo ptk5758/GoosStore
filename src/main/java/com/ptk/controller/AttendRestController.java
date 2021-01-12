@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AttendRestController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AttendRestController.class);
+	
+	private String[] ENG_MONTH = {"January","April","March","April","May","June","July","August","September","October","November","December"};
+	private String[] DAY_OF_WEEK = {"일","월","화","수","목","금","토","일"};
 
 	/**
 	 * 날짜를 가져오는 API입니다. 20% 진행
@@ -24,21 +27,54 @@ public class AttendRestController {
 	public String getDatePOST() {
 		String result;
 		//중간에 오늘날짜 총 5개 출력예정
-		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
+		
+		
 		result = "{\"date\":[";
 		//"{\"day\":\"1\"},{\"day\":\"2\"},{\"day\":\"3\"},{\"day\":\"4\"},{\"day\":\"5\"}]}";
-		String[] ENG_MONTH = {"January","April","March","April","May","June","July","August","September","October","November","December"};
+		
 		for(int i=0; i<5; i++) {
 			if(i+1 == 5) {
-				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\"}]}";
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
 				break;
 			}
-			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\"},";
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
 		}
 		logger.info(result);
 		return result;
 	}
+	
+	@RequestMapping(value = "/backDate", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8")
+	public String getBackDate() {
+		String result;
+		Calendar cal = Calendar.getInstance();
+		result = "{\"backDate\":[";
+		for(int i=0; i<5; i++) {
+			cal.add(Calendar.DATE, -1);
+			if(i+1 == 5) {
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
+				break;
+			}
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
+		}
+		logger.info(result);
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+

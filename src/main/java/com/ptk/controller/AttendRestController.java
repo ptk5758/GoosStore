@@ -29,10 +29,10 @@ public class AttendRestController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AttendRestController.class);
 	
-	private String[] ENG_MONTH = {"January","April","March","April","May","June","July","August","September","October","November","December"};
-	private String[] DAY_OF_WEEK = {"일","월","화","수","목","금","토","일"};
-	private String[] font_color = {"#454545","#454545","#454545","#454545","#454545","#6f6fff","#ff464a"};
-	//								   월		화			수		목			금		토			일
+	private String[] ENG_MONTH = {"January","February","March","April","May","June","July","August","September","October","November","December"};
+	private String[] DAY_OF_WEEK = {"일","월","화","수","목","금","토"};
+	private String[] font_color = {"#ff464a","#454545","#454545","#454545","#454545","#454545","#6f6fff"};
+	//								   일		월			화		수			목		금			토
 
 	/**
 	 * 날짜를 가져오는 API입니다. 20% 진행
@@ -51,16 +51,53 @@ public class AttendRestController {
 		
 		for(int i=0; i<5; i++) {
 			if(i+1 == 5) {
-				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
-				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
-			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
-			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
+			cal.add(Calendar.DATE, 1);
+			
+		}
+		//logger.info(result);
+		logger.info("오버로드 테스트 2222222");
+		return result;
+	}
+	/**
+	 * 기준날 의 기점으로 앞의 날자를 가져옴
+	 * @param date 기준날
+	 * @return date json
+	 */
+	@RequestMapping(value = "/getDate", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8", params = {"date"})
+	public String getDatePOST(@RequestParam("date") String date) {
+		String result;
+		//중간에 오늘날짜 총 5개 출력예정
+		Calendar cal = Calendar.getInstance();
+		int newyear = Integer.parseInt(date.substring(0, 4));
+		int newMonth = Integer.parseInt(date.substring(5, 7));
+		int newDate = Integer.parseInt(date.substring(8, 10));
+		cal.set(newyear, newMonth-1, newDate);
+		
+		result = "{\"date\":[";
+		//"{\"day\":\"1\"},{\"day\":\"2\"},{\"day\":\"3\"},{\"day\":\"4\"},{\"day\":\"5\"}]}";
+		
+		for(int i=0; i<5; i++) {
+			if(i+1 == 5) {
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
+				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
+				break;
+			}
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
+			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
 		}
@@ -76,20 +113,74 @@ public class AttendRestController {
 		for(int i=0; i<2; i++) {
 			cal.add(Calendar.DATE, -1);
 			if(i+1 == 2) {
-				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
-				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
-			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
-			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 		}
 		//logger.info(result);
 		return result;
 	}
+	
+	
+	/**
+	 * 겟 기준 날짜 의 뒤에 날짜를 불러오는 메소드의 오버로딩 
+	 * @param date 기준날짜
+	 * @return date json
+	 */
+	@RequestMapping(value = "/backDate", method = RequestMethod.GET, produces = "text/plain; charset=UTF-8", params = {"date"})
+	public String getBackDate(@RequestParam("date") String date) {
+		String result;
+		int newyear = Integer.parseInt(date.substring(0, 4));
+		int newMonth = Integer.parseInt(date.substring(5, 7));
+		int newDate = Integer.parseInt(date.substring(8, 10));
+		logger.info(date);
+		logger.info(newyear+"::"+newMonth+"::"+newDate);
+		Calendar cal = Calendar.getInstance();
+		cal.set(newyear, newMonth-1, newDate);
+		result = "{\"backDate\":[";
+		for(int i=0; i<2; i++) {
+			cal.add(Calendar.DATE, -1);
+			if(i+1 == 2) {
+				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
+				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
+				break;
+			}
+			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
+			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+			result += "\"test\":\"testtestestestestestsetset\",";
+			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
+		}
+		//logger.info(result);
+		logger.info(date+"<<<<<<오버로딩 테스트");
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/attendInsert", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String attendInsert(@RequestBody AttendVO attend) {
 		//logger.info(attend.toString());

@@ -12,7 +12,7 @@
 			success : function(backdate){				
 				let backDateData = backdate.backDate;
 				for(let j=backDateData.length-1; j>=0; j--){
-					result += `<div class="selectDateItem">
+					result += `<div class="selectDateItem" data-date="${backDateData[j].year}-${backDateData[j].Month}-${backDateData[j].day}" onclick="selectAttend(this)">
 											<div class="dateMonth">${backDateData[j].MONTH_ENG}</div>
 											<div class="dateDate">
 												<div style="color: ${backDateData[j].font_color}"><b>${backDateData[j].DAY_OF_WEEK}</b></div>
@@ -20,23 +20,16 @@
 											</div>
 											<div class="todayCheckMember">4</div>
 								</div>`;
-				}
-				console.log("backdate");
-				console.log(backDateData);
-				console.log(backDateData[0].day);
-				
+				}				
 				$.ajax({
 					url : "/restAttend/getDate",
 					Type : "GET",
 					dataType : "json",
 					success : function(data){
-						console.log(data);
-						let jsondata = data.date;
-						console.log(jsondata);
-						
+						let jsondata = data.date;						
 						$('.selectDate').html("");
 						for(let i=0; i<jsondata.length; i++){
-							result += `<div class="selectDateItem">
+							result += `<div class="selectDateItem" data-date="${jsondata[i].year}-${jsondata[i].Month}-${jsondata[i].day}" onclick="selectAttend(this)">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
 												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
@@ -45,10 +38,8 @@
 											<div class="todayCheckMember">4</div>
 										</div>`;
 						}
-						$('.selectDate').html(result);
-						
-						today();
-						
+						$('.selectDate').html(result);						
+						today();						
 					},
 					error : function(error){
 						console.log(error);
@@ -111,11 +102,14 @@
 	
 	let getAttendList = function(){
 		let today = new Date();
+		let month = ("00"+(today.getMonth()+1).toString()).slice(-2);
+		let day = ("00"+(today.getDate()).toString()).slice(-2);
+		let defaultDate = `${today.getFullYear()}-${month}-${day}`;
 		$(function(){
 			$.ajax({
 				url : "/restAttend/getAttendList",
 				type : "get",
-				data : "date=2021-01-13",
+				data : "date="+defaultDate,
 				dataType: "json",
 				success : function(data){
 					let attendlist = data.list;
@@ -123,11 +117,9 @@
 					let result = "";					
 					for(let i=0; i<attendlist.length; i++){
 						let item = attendlist[i];
-						console.log("item::");
-						console.log(item);
 						result += `<div class="attendListItem">
 										<div class="listUserINFO">
-											<div>Lv.10</div>
+											<div class="userINFO_Level">Lv.${item.userLevel}</div>
 											<div data-user="${item.userID}"><b>${item.userNickName}</b></div>
 											<div class="UserINFO_date">${item.attendDate}</div>
 										</div>
@@ -145,8 +137,42 @@
 			});
 		});
 	}
-	
 	getAttendList();
+	
+	function selectAttend(selectDate){
+		$(function(){
+			let defaultDate = $(selectDate).data('date');
+			$.ajax({
+				url : "/restAttend/getAttendList",
+				type : "get",
+				data : "date="+defaultDate,
+				dataType: "json",
+				success : function(data){
+					let attendlist = data.list;
+					$('.attendList').html("");
+					let result = "";					
+					for(let i=0; i<attendlist.length; i++){
+						let item = attendlist[i];
+						result += `<div class="attendListItem">
+										<div class="listUserINFO">
+											<div class="userINFO_Level">Lv.${item.userLevel}</div>
+											<div data-user="${item.userID}"><b>${item.userNickName}</b></div>
+											<div class="UserINFO_date">${item.attendDate}</div>
+										</div>
+										<div class="listContent">
+											<p>${item.content}</p>
+										</div>
+									</div>`;
+					}
+					$('.attendList').html(result);
+				},
+				error : function(error){
+					console.log(error);
+				}
+				
+			});
+		});
+	}
 	
 	
 	

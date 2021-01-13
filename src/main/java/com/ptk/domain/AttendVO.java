@@ -2,7 +2,7 @@ package com.ptk.domain;
 
 import java.util.Date;
 
-public class AttendVO {
+public class AttendVO{
 	
 	private String userID;
 	private String userNickName;
@@ -10,9 +10,18 @@ public class AttendVO {
 	private Date attendDate;
 	private String lastAttendDate;
 	private int attendRun;
+	private int userLevel;
 	
 	
 	
+	public int getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(int userLevel) {
+		this.userLevel = userLevel;
+	}
+
 	public String getLastAttendDate() {
 		return lastAttendDate;
 	}

@@ -53,11 +53,13 @@ public class AttendRestController {
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
@@ -76,11 +78,13 @@ public class AttendRestController {
 			if(i+1 == 2) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+cal.get(Calendar.MONTH)+1+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
+			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)]+"\"},";
 		}
 		//logger.info(result);
@@ -88,7 +92,7 @@ public class AttendRestController {
 	}
 	@RequestMapping(value = "/attendInsert", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String attendInsert(@RequestBody AttendVO attend) {
-		logger.info(attend.toString());
+		//logger.info(attend.toString());
 		if(attend.getContent().equals("") || attend.getUserID().equals("") || attend.getUserNickName().equals("")) {
 			return "등록하는대 실패하였습니다.";
 		}
@@ -118,19 +122,29 @@ public class AttendRestController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		//result = "{\"list\":[{\"name\":\"ptk\"},{\"name\":\"pty\"}]}";
 		result = "{\"list\":[";
-		for(int i=0; i<list.size(); i++) {
-			AttendVO attend = list.get(i);
-			result += "{\"userID\":\""+attend.getUserID()+"\",";
-			result += "\"userNickName\":\""+attend.getUserNickName()+"\",";
-			result += "\"attendDate\":\""+sdf.format(attend.getAttendDate())+"\",";
-			result += "\"content\":\""+attend.getContent()+"\"}";
-			if(i+1 == list.size()) {
-				result += "]}";
-			} else {
-				result += ",";
+		if(list.isEmpty()) {
+			result += "{\"userID\":\"\",";
+			result += "\"userLevel\":\"\",";
+			result += "\"userNickName\":\"\",";
+			result += "\"attendDate\":\"\",";
+			result += "\"content\":\"\"}]}";
+		} else {
+			for(int i=0; i<list.size(); i++) {
+				AttendVO attend = list.get(i);
+				result += "{\"userID\":\""+attend.getUserID()+"\",";
+				result += "\"userLevel\":\""+attend.getUserLevel()+"\",";
+				result += "\"userNickName\":\""+attend.getUserNickName()+"\",";
+				result += "\"attendDate\":\""+sdf.format(attend.getAttendDate())+"\",";
+				result += "\"content\":\""+attend.getContent()+"\"}";
+				if(i+1 == list.size()) {
+					result += "]}";
+				} else {
+					result += ",";
+				}
 			}
 		}
-		logger.info(result);
+		
+		//logger.info(result);
 		
 		return result;
 	}

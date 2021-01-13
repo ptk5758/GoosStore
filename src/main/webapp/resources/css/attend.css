@@ -118,13 +118,18 @@
 .attendListItem{
 	display: flex;
 	flex-direction: column;
+	margin-top: 25px;
 }
 .listUserINFO{
 	display: flex;
 	font-size: 18px;
 }
+.userINFO_Level{
+	width: 60px;
+	text-align: center;
+}
 .listUserINFO > div{	
-	margin: 5px;
+	margin: 10px 12px;
 }
 
 .UserINFO_date{

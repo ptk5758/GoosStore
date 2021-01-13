@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -102,7 +103,7 @@ public class AttendRestController {
 		  } else {
 			  attend.setLastAttendDate(today);
 			  dao.insertAttend(attend); 
-			  dao.updateLastAttend(attend); 
+			  dao.updateLastAttend(attend);
 		  }
 		} catch (Exception e) {
 			return "알수없는 오류로인해 등록에 실패하였습니다";
@@ -110,11 +111,43 @@ public class AttendRestController {
 		return "등록성공";
 	}
 	
+	@RequestMapping(value = "/getAttendList", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String getAttendList(@RequestParam("date") String date) {
+		String result;
+		List<AttendVO> list = dao.getAttendList(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//result = "{\"list\":[{\"name\":\"ptk\"},{\"name\":\"pty\"}]}";
+		result = "{\"list\":[";
+		for(int i=0; i<list.size(); i++) {
+			AttendVO attend = list.get(i);
+			result += "{\"userID\":\""+attend.getUserID()+"\",";
+			result += "\"userNickName\":\""+attend.getUserNickName()+"\",";
+			result += "\"attendDate\":\""+sdf.format(attend.getAttendDate())+"\",";
+			result += "\"content\":\""+attend.getContent()+"\"}";
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+		}
+		logger.info(result);
+		
+		return result;
+	}
+	
 	private String lastAttend(AttendVO attend) {
 		List<String> string = dao.getLastAttend(attend);
 		
 		return string.get(0);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 

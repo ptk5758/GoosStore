@@ -7,7 +7,7 @@
 			<div class="attendTitle_Text">출석체크</div>
 		</div>
 		<div class="attendBorder">
-			<h1>2021년</h1>
+			<h1 id="nowYear" data-year="2021">2021년</h1>
 			<div class="selectDate">
 				<div>9999년 12월 31일</div>
 			</div>

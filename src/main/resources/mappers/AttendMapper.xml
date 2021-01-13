@@ -12,5 +12,9 @@
 	<update id="updateLastAttend">
 		update attend set lastAttendDate = #{lastAttendDate} where userID = #{userID}
 	</update>
+	<select id="getAttendList" resultType="AttendVO">
+		<!-- select * from attend JOIN user where left(attendDate,10) = #{date} -->
+		select * from attend LEFT JOIN user on attend.userID = user.userID where left(attendDate,10) = #{date}
+	</select>
 	
 </mapper>

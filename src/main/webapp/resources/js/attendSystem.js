@@ -4,6 +4,7 @@
 
 	$(document).ready(function(){
 		let result = "";
+		console.log($('#nowYear').data('year'));/*---------------------------핵심-------------------------------------*/
 		$.ajax({
 			url : "/restAttend/backDate",
 			Type : "GET",
@@ -45,7 +46,9 @@
 										</div>`;
 						}
 						$('.selectDate').html(result);
+						
 						today();
+						
 					},
 					error : function(error){
 						console.log(error);
@@ -97,6 +100,7 @@
 				contentType: "application/json; charset=UTF-8",
 				success : function(data){
 					alert(data);
+					getAttendList();
 				},
 				error : function(error){
 					console.log(error);
@@ -104,7 +108,45 @@
 			});
 		});
 	}
-
+	
+	let getAttendList = function(){
+		let today = new Date();
+		$(function(){
+			$.ajax({
+				url : "/restAttend/getAttendList",
+				type : "get",
+				data : "date=2021-01-13",
+				dataType: "json",
+				success : function(data){
+					let attendlist = data.list;
+					$('.attendList').html("");
+					let result = "";					
+					for(let i=0; i<attendlist.length; i++){
+						let item = attendlist[i];
+						console.log("item::");
+						console.log(item);
+						result += `<div class="attendListItem">
+										<div class="listUserINFO">
+											<div>Lv.10</div>
+											<div data-user="${item.userID}"><b>${item.userNickName}</b></div>
+											<div class="UserINFO_date">${item.attendDate}</div>
+										</div>
+										<div class="listContent">
+											<p>${item.content}</p>
+										</div>
+									</div>`;
+					}
+					$('.attendList').html(result);
+				},
+				error : function(error){
+					console.log(error);
+				}
+				
+			});
+		});
+	}
+	
+	getAttendList();
 	
 	
 	

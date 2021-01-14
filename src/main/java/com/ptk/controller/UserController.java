@@ -72,6 +72,7 @@ public class UserController {
 	public String logout(RedirectAttributes rttr, HttpSession session) {
 		session.invalidate();
 		rttr.addFlashAttribute("msg", "로그아웃 되었습니다.");
+		rttr.addFlashAttribute("value", "logout");
 		return "redirect:/";
 	}
 	

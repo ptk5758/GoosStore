@@ -16,6 +16,14 @@
 			</div>
 		</div>
 		<script>
+			sessionStorage.setItem("sessionID","${sessionID}");
+		</script>
+		<c:if test="${value == 'logout'}">
+			<sciprt>
+				sessionStorage.clear();
+			</sciprt>
+		</c:if>
+		<script>
 			var welcome = "${msg}";
 			var myKey = "401EFF3EAE50A2D33FB2E62249BF9B62";		
 			let mysteamID ="76561198065106456";

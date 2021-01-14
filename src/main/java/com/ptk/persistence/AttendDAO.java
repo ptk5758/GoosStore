@@ -10,4 +10,7 @@ public interface AttendDAO {
 	public List<String> getLastAttend(AttendVO attend);
 	public void updateLastAttend(AttendVO attend);
 	public List<AttendVO> getAttendList(String date);
+	public void attendUpdate(AttendVO attend);
+	public void attendDelete(AttendVO attend);
+	
 }

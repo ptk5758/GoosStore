@@ -47,4 +47,14 @@ public class AttendDAOCon implements AttendDAO{
 	public List<AttendVO> getAttendList(String date) {
 		return sqlSession.selectList(NAMESPACE+".getAttendList", date);
 	}
+	
+	@Override
+	public void attendUpdate(AttendVO attend) {
+		sqlSession.update(NAMESPACE+".attendUpdate", attend);
+	}
+	@Override
+	public void attendDelete(AttendVO attend) {
+		sqlSession.delete(NAMESPACE+".attendDelete", attend);
+		
+	}
 }

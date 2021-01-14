@@ -15,3 +15,4 @@
 		});
 	});
 
+	sessionStorage.setItem("sessionTest","test");

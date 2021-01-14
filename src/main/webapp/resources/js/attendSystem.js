@@ -121,6 +121,7 @@
 											<div class="userINFO_Level">Lv.${item.userLevel}</div>
 											<div data-user="${item.userID}"><b>${item.userNickName}</b></div>
 											<div class="UserINFO_date">${item.attendDate}</div>
+											${sessionStorage.getItem('sessionID')===item.userID ? `<div onclick='attendcontentupdate("${item.attendUID}")'>수정</div><div onclick='attendcontentDelete("${item.attendUID}")'>삭제</div>`:``}
 										</div>
 										<div class="listContent">
 											<p>${item.content}</p>
@@ -157,6 +158,7 @@
 											<div class="userINFO_Level">Lv.${item.userLevel}</div>
 											<div data-user="${item.userID}"><b>${item.userNickName}</b></div>
 											<div class="UserINFO_date">${item.attendDate}</div>
+											${sessionStorage.getItem('sessionID')===item.userID ? `<div onclick='attendcontentupdate("${item.attendUID}")'>수정</div><div onclick='attendcontentDelete("${item.attendUID}")'>삭제</div>`:``}
 										</div>
 										<div class="listContent">
 											<p>${item.content}</p>
@@ -233,6 +235,65 @@
 		});
 	}
 	
+	function attendcontentupdate(attendUID){
+		
+		$(function(){
+			$('.listContent').html(`
+				<div class="attendUpdateElement">
+					<input id="${attendUID}_Content" class="attendUpdateInput"><input type="button" value="수정하기" class="attendUpdateButton" onclick="attendUpdate('${attendUID}')">
+				</div>`
+			);
+		});
+	}
+	
+	let attendUpdate = function(attendUID){
+
+		let newContent = document.getElementById(`${attendUID}_Content`).value;
+		let requestData = {attendUID:attendUID, content:newContent}
+		console.log(JSON.stringify(requestData));
+		$(function(){
+			$.ajax({
+				url: "/restAttend/attendUpdate",
+				type: "PATCH",
+				dataType: "json",
+				data: JSON.stringify(requestData),
+				contentType: "application/json; charset=UTF-8",
+				success: function(data){
+					console.log(data.value);
+					alert(data.msg);
+					getAttendList();
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		});
+	}
+	
+	let attendcontentDelete = function(attendUID){
+		console.log(attendUID+"==================");
+		
+		let requestData = {attendUID:attendUID}
+		console.log(JSON.stringify(requestData));
+		$(function(){
+			$.ajax({
+				url: "/restAttend/attendDelete",
+				type: "DELETE",
+				dataType: "json",
+				data: JSON.stringify(requestData),
+				contentType: "application/json; charset=UTF-8",
+				success: function(data){
+					console.log(data);
+					console.log(data.value);
+					alert(data.msg);
+					getAttendList();
+				},
+				error: function(error){
+					console.log(error);
+				}
+			});
+		});
+	}
 	
 	
 	

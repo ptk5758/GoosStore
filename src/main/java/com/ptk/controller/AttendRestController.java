@@ -65,7 +65,6 @@ public class AttendRestController {
 			
 		}
 		//logger.info(result);
-		logger.info("오버로드 테스트 2222222");
 		return result;
 	}
 	/**
@@ -140,8 +139,6 @@ public class AttendRestController {
 		int newyear = Integer.parseInt(date.substring(0, 4));
 		int newMonth = Integer.parseInt(date.substring(5, 7));
 		int newDate = Integer.parseInt(date.substring(8, 10));
-		logger.info(date);
-		logger.info(newyear+"::"+newMonth+"::"+newDate);
 		Calendar cal = Calendar.getInstance();
 		cal.set(newyear, newMonth-1, newDate);
 		result = "{\"backDate\":[";
@@ -161,25 +158,9 @@ public class AttendRestController {
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 		}
 		//logger.info(result);
-		logger.info(date+"<<<<<<오버로딩 테스트");
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	@RequestMapping(value = "/attendInsert", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String attendInsert(@RequestBody AttendVO attend) {
@@ -192,7 +173,6 @@ public class AttendRestController {
 		String today = sdf.format(date);
 		try {
 			
-		  logger.info(lastAttend(attend)+"마지막 출석체크 일자");
 		  if(today.substring(0,10).equals(lastAttend(attend).substring(0, 10))) {
 			  return "오늘은 이미 출석체크를 하셨습니다."; 
 		  } else {
@@ -215,16 +195,17 @@ public class AttendRestController {
 		result = "{\"list\":[";
 		if(list.isEmpty()) {
 			result += "{\"userID\":\"\",";
-			result += "\"userLevel\":\"\",";
-			result += "\"userNickName\":\"\",";
+			result += "\"userLevel\":\"1\",";
+			result += "\"userNickName\":\"사람\",";
 			result += "\"attendDate\":\"\",";
-			result += "\"content\":\"\"}]}";
+			result += "\"content\":\"1등할사람 기다리는중\"}]}";
 		} else {
 			for(int i=0; i<list.size(); i++) {
 				AttendVO attend = list.get(i);
 				result += "{\"userID\":\""+attend.getUserID()+"\",";
 				result += "\"userLevel\":\""+attend.getUserLevel()+"\",";
 				result += "\"userNickName\":\""+attend.getUserNickName()+"\",";
+				result += "\"attendUID\":\""+attend.getAttendUID()+"\",";
 				result += "\"attendDate\":\""+sdf.format(attend.getAttendDate())+"\",";
 				result += "\"content\":\""+attend.getContent()+"\"}";
 				if(i+1 == list.size()) {
@@ -239,6 +220,31 @@ public class AttendRestController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value = "/attendUpdate", method = RequestMethod.PATCH, produces = "application/text; charset=UTF-8")
+	public String attendUpdate(@RequestBody AttendVO attend) {
+		dao.attendUpdate(attend);
+		return "{\"value\":\"ok\",\"msg\":\"수정완료\"}";
+	}
+	
+	@RequestMapping(value = "/attendDelete", method = RequestMethod.DELETE, produces = "application/text; charset=UTF-8")
+	public String attendDelete(@RequestBody AttendVO attend) {
+		logger.info(attend.toString()+"================");
+		dao.attendDelete(attend);
+		return "{\"value\":\"ok\",\"msg\":\"삭제완료\"}";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	private String lastAttend(AttendVO attend) {
 		List<String> string = dao.getLastAttend(attend);

@@ -20,7 +20,8 @@
 
 .attendBorder{
 	background-color: #fff;
-	height: 740px;
+	min-height: 740px;
+	padding-bottom: 120px;
 }
 .attendTitle{
 	display: flex;
@@ -60,6 +61,13 @@
 	font-size: 18px;
 	font-weight: bold;
 	padding-left: 3px;
+}
+.nowYear{
+	width: 90%;
+	margin: 0 auto;
+	font-size: 32px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
 }
 .todayCheckMember{
 	padding: 5px;
@@ -142,7 +150,27 @@
 	font-size: 18px;
 	padding-left: 15px;
 }
-
+.attendUpdateElement{
+	width: 90%;
+	margin: 0 auto;
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+.attendUpdateInput{
+	width: 80%;
+	height: 40px;
+}
+.attendUpdateButton{
+	width: 20%;
+	height: 40px;
+	color: #fff;
+	background-color: #5ebbe3;
+	border: 0px solid#000000;
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: 8px;
+}
 
 
 

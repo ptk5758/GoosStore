@@ -26,4 +26,10 @@
 				</c:if>
 			</div>
 		</div>
+		<c:if test="${sessionID == null }">
+			<script>
+				sessionStorage.clear();
+			</script>
+		</c:if>
+
 		

@@ -8,6 +8,7 @@
 			</c:if>
 			<h1 onclick="location.href='/shop/list'">굿즈샵보러가기</h1>
 			<h1 onclick="location.href='/attend/'">출석체크</h1>
+			<h1 onclick="location.href='/ask/'">질답문변</h1>
 			<h1 id="test">스팀 api테스트</h1>
 			<div>
 				<h2 id="userText">트위치 ID를 입력하여주세요</h2>

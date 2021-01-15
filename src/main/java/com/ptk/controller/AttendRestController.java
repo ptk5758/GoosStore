@@ -55,7 +55,6 @@ public class AttendRestController {
 			int defaultDate = cal.get(Calendar.DATE);
 			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
 			int count = dao.getAttendCount(defaultDates);
-			logger.info(defaultDate+"<<<<<");
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
@@ -99,7 +98,6 @@ public class AttendRestController {
 			int defaultDate = cal.get(Calendar.DATE);
 			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
 			int count = dao.getAttendCount(defaultDates);
-			logger.info(defaultDate+"<<<<<");
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";

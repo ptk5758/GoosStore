@@ -13,7 +13,6 @@
 				let backDateData = backdate.backDate;
 				for(let j=backDateData.length-1; j>=0; j--){
 					let itemDate = `${backDateData[j].year}-${("00"+backDateData[j].Month).slice(-2)}-${("00"+backDateData[j].day).slice(-2)}`;
-					console.log(itemDate);
 					result += `<div class="selectDateItem" data-date="${backDateData[j].year}-${("00"+backDateData[j].Month).slice(-2)}-${("00"+backDateData[j].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${backDateData[j].MONTH_ENG}</div>
 											<div class="dateDate">
@@ -31,8 +30,8 @@
 						let jsondata = data.date;						
 						$('.selectDate').html("");
 						for(let i=0; i<jsondata.length; i++){
+							$('#nowYear').html(jsondata[0].year);
 							let itemDate = `${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}`;
-							console.log(itemDate);
 							result += `<div class="selectDateItem" data-date="${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
@@ -220,6 +219,7 @@
 					success : function(data){
 						let jsondata = data.date;
 						for(let i=0; i<jsondata.length; i++){
+							$('#nowYear').html(jsondata[0].year);
 							result += `<div class="selectDateItem" data-date="${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
@@ -231,7 +231,6 @@
 						}
 						$('.selectDate').html(result);						
 						today();
-						console.log(jsondata);
 					},
 					error : function(error){
 						console.log(error);
@@ -264,7 +263,6 @@
 				data: JSON.stringify(requestData),
 				contentType: "application/json; charset=UTF-8",
 				success: function(data){
-					console.log(data.value);
 					alert(data.msg);
 					getAttendList();
 				},
@@ -288,8 +286,6 @@
 				data: JSON.stringify(requestData),
 				contentType: "application/json; charset=UTF-8",
 				success: function(data){
-					console.log(data);
-					console.log(data.value);
 					alert(data.msg);
 					getAttendList();
 				},

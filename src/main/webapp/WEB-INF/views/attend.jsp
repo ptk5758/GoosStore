@@ -8,7 +8,6 @@
 		</div>
 		<div class="attendBorder">
 			<div class="nowYear" id="nowYear" data-year="2021">2021년</div>
-			<h1>${sessionID }</h1>
 			<div class="selectDate">
 				<div>9999년 12월 31일</div>
 			</div>

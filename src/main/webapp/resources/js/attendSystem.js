@@ -12,13 +12,15 @@
 			success : function(backdate){				
 				let backDateData = backdate.backDate;
 				for(let j=backDateData.length-1; j>=0; j--){
+					let itemDate = `${backDateData[j].year}-${("00"+backDateData[j].Month).slice(-2)}-${("00"+backDateData[j].day).slice(-2)}`;
+					console.log(itemDate);
 					result += `<div class="selectDateItem" data-date="${backDateData[j].year}-${("00"+backDateData[j].Month).slice(-2)}-${("00"+backDateData[j].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${backDateData[j].MONTH_ENG}</div>
 											<div class="dateDate">
 												<div style="color: ${backDateData[j].font_color}"><b>${backDateData[j].DAY_OF_WEEK}</b></div>
 												<div>${backDateData[j].day}</div>
 											</div>
-											<div class="todayCheckMember">4</div>
+											<div id="${itemDate}_Count" class="todayCheckMember">${backDateData[j].count}</div>
 								</div>`;
 				}				
 				$.ajax({
@@ -29,13 +31,15 @@
 						let jsondata = data.date;						
 						$('.selectDate').html("");
 						for(let i=0; i<jsondata.length; i++){
+							let itemDate = `${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}`;
+							console.log(itemDate);
 							result += `<div class="selectDateItem" data-date="${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
 												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
 												<div>${jsondata[i].day}</div>
 											</div>
-											<div class="todayCheckMember">4</div>
+											<div id="${itemDate}_Count" class="todayCheckMember">${jsondata[i].count}</div>
 										</div>`;
 						}
 						$('.selectDate').html(result);						
@@ -187,13 +191,14 @@
 					success : function(data){
 						let jsondata = data.backDate;
 						for(let i=jsondata.length-1; i>=0; i--){
+							
 							result += `<div class="selectDateItem" data-date="${jsondata[i].year}-${("00"+jsondata[i].Month).slice(-2)}-${("00"+jsondata[i].day).slice(-2)}" onclick="selectAttend(this)">
 											<div class="dateMonth">${jsondata[i].MONTH_ENG}</div>
 											<div class="dateDate">
 												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
 												<div>${jsondata[i].day}</div>
 											</div>
-											<div class="todayCheckMember">4</div>
+											<div class="todayCheckMember">${jsondata[i].count}</div>
 										</div>`;
 						}
 						getDate(selectdate, result);
@@ -221,7 +226,7 @@
 												<div style="color: ${jsondata[i].font_color}"><b>${jsondata[i].DAY_OF_WEEK}</b></div>
 												<div>${jsondata[i].day}</div>
 											</div>
-											<div class="todayCheckMember">4</div>
+											<div class="todayCheckMember">${jsondata[i].count}</div>
 										</div>`;
 						}
 						$('.selectDate').html(result);						
@@ -295,6 +300,9 @@
 		});
 	}
 	
+	let attendCount = function(date){
+		return `${date}:PONG`;
+	}
 	
 	
 	

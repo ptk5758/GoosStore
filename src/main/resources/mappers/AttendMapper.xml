@@ -22,6 +22,10 @@
 	<delete id="attendDelete">
 		delete from attend where attendUID = #{attendUID}
 	</delete>
+	<select id="getAttendCount" resultType="int">
+		select count(*) from attend where left(attendDate,10) = #{date} 
+	</select>
+	
 	
 	
 	

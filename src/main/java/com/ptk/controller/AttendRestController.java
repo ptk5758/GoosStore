@@ -50,16 +50,24 @@ public class AttendRestController {
 		//"{\"day\":\"1\"},{\"day\":\"2\"},{\"day\":\"3\"},{\"day\":\"4\"},{\"day\":\"5\"}]}";
 		
 		for(int i=0; i<5; i++) {
+			String defaultYear = cal.get(Calendar.YEAR)+"";
+			int defaultMonth = cal.get(Calendar.MONTH)+1;
+			int defaultDate = cal.get(Calendar.DATE);
+			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
+			int count = dao.getAttendCount(defaultDates);
+			logger.info(defaultDate+"<<<<<");
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"count\":\""+count+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+			result += "\"count\":\""+count+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
@@ -86,16 +94,24 @@ public class AttendRestController {
 		//"{\"day\":\"1\"},{\"day\":\"2\"},{\"day\":\"3\"},{\"day\":\"4\"},{\"day\":\"5\"}]}";
 		
 		for(int i=0; i<5; i++) {
+			String defaultYear = cal.get(Calendar.YEAR)+"";
+			int defaultMonth = cal.get(Calendar.MONTH)+1;
+			int defaultDate = cal.get(Calendar.DATE);
+			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
+			int count = dao.getAttendCount(defaultDates);
+			logger.info(defaultDate+"<<<<<");
 			if(i+1 == 5) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"count\":\""+count+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+			result += "\"count\":\""+count+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 			cal.add(Calendar.DATE, 1);
 			
@@ -111,16 +127,25 @@ public class AttendRestController {
 		result = "{\"backDate\":[";
 		for(int i=0; i<2; i++) {
 			cal.add(Calendar.DATE, -1);
+			String defaultYear = cal.get(Calendar.YEAR)+"";
+			int defaultMonth = cal.get(Calendar.MONTH)+1;
+			int defaultDate = cal.get(Calendar.DATE);
+			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
+			int count = dao.getAttendCount(defaultDates);
+			logger.info(defaultDate+"<<<<<");
+			
 			if(i+1 == 2) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"count\":\""+count+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+			result += "\"count\":\""+count+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 		}
 		//logger.info(result);
@@ -144,17 +169,24 @@ public class AttendRestController {
 		result = "{\"backDate\":[";
 		for(int i=0; i<2; i++) {
 			cal.add(Calendar.DATE, -1);
+			String defaultYear = cal.get(Calendar.YEAR)+"";
+			int defaultMonth = cal.get(Calendar.MONTH)+1;
+			int defaultDate = cal.get(Calendar.DATE);
+			String defaultDates = defaultYear+"-"+String.format("%02d", defaultMonth)+"-"+String.format("%02d", defaultDate);
+			int count = dao.getAttendCount(defaultDates);
+			logger.info(defaultDate+"<<<<<");
 			if(i+1 == 2) {
 				result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 				result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 				result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
+				result += "\"count\":\""+count+"\",";
 				result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"}]}";
 				break;
 			}
 			result += "{\"day\":\"" + cal.get(Calendar.DATE) + "\",\"MONTH_ENG\":\""+ENG_MONTH[cal.get(Calendar.MONTH)]+"\",\"Month\":\""+(cal.get(Calendar.MONTH)+1)+"\",";
 			result += "\"font_color\":\""+font_color[cal.get(Calendar.DAY_OF_WEEK)-1]+"\",";
 			result += "\"year\":\""+cal.get(Calendar.YEAR)+"\",";
-			result += "\"test\":\"testtestestestestestsetset\",";
+			result += "\"count\":\""+count+"\",";
 			result += "\"DAY_OF_WEEK\":\""+DAY_OF_WEEK[cal.get(Calendar.DAY_OF_WEEK)-1]+"\"},";
 		}
 		//logger.info(result);
@@ -178,7 +210,7 @@ public class AttendRestController {
 		  } else {
 			  attend.setLastAttendDate(today);
 			  dao.insertAttend(attend); 
-			  dao.updateLastAttend(attend);
+			  //dao.updateLastAttend(attend);
 		  }
 		} catch (Exception e) {
 			return "알수없는 오류로인해 등록에 실패하였습니다";
@@ -234,7 +266,11 @@ public class AttendRestController {
 		return "{\"value\":\"ok\",\"msg\":\"삭제완료\"}";
 	}
 	
-	
+	@RequestMapping(value = "/getAttendCount", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String getAttendCount(@RequestParam("date")String date) {
+		logger.info(date+"dsfjkahfdkjsa");
+		return "성공";
+	}
 	
 	
 	

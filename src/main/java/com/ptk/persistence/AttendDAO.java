@@ -1,8 +1,11 @@
 package com.ptk.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ptk.domain.AttendVO;
+import com.ptk.domain.UserVO;
 
 public interface AttendDAO {
 	
@@ -12,5 +15,6 @@ public interface AttendDAO {
 	public List<AttendVO> getAttendList(String date);
 	public void attendUpdate(AttendVO attend);
 	public void attendDelete(AttendVO attend);
+	public int getAttendCount(String date);
 	
 }

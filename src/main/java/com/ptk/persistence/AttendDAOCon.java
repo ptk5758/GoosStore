@@ -1,6 +1,7 @@
 package com.ptk.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ptk.controller.AttendRestController;
 import com.ptk.domain.AttendVO;
+import com.ptk.domain.UserVO;
 
 @Repository
 public class AttendDAOCon implements AttendDAO{
@@ -56,5 +58,10 @@ public class AttendDAOCon implements AttendDAO{
 	public void attendDelete(AttendVO attend) {
 		sqlSession.delete(NAMESPACE+".attendDelete", attend);
 		
+	}
+	
+	@Override
+	public int getAttendCount(String date) {
+		return sqlSession.selectOne(NAMESPACE+".getAttendCount", date);
 	}
 }

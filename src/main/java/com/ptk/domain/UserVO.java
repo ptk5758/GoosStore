@@ -12,8 +12,15 @@ public class UserVO {
 	private String userPhone;
 	private String userEmail;
 	private int userLevel;
+	private int userExp;
 	
 
+	public int getUserExp() {
+		return userExp;
+	}
+	public void setUserExp(int userExp) {
+		this.userExp = userExp;
+	}
 	public int getUserLevel() {
 		return userLevel;
 	}
@@ -86,6 +93,7 @@ public class UserVO {
 				+userNickName+" = 유저닉네임, "
 				+userPhone+" = 전화번호, "
 				+userEmail+" = 유저이메일주소,"
+				+userExp+" = 유저포인트,"
 				+userLevel+" = 유저레벨";
 	}
 }

@@ -96,7 +96,7 @@ public class AskVO {
 
 	@Override
 	public String toString() {
-		return "askUID:"+this.askUID+"userEmail:"+this.userEmail+"category:"+this.category+"phone:"+this.phone+"content:"+this.content+"uploadDate:"+this.uploadDate+""
-				+ "file1:"+this.file1+"file2:"+this.file2+"file3:"+this.file3+"";
+		return "askUID::"+this.askUID+"userEmail::"+this.userEmail+"category::"+this.category+"phone:"+this.phone+"content::"+this.content+"uploadDate::"+this.uploadDate+""
+				+ "file1::"+this.file1+"file2::"+this.file2+"file3::"+this.file3+"";
 	}
 }

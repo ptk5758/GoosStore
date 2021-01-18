@@ -26,4 +26,9 @@ public class AskDAOCon implements AskDAO{
 	public List<AskVO> getAskList() {
 		return sqlSession.selectList(NAMESPACE+".getAskList");
 	}
+	
+	@Override
+	public AskVO getAskPage(Integer askUID) {
+		return sqlSession.selectOne(NAMESPACE+".getAskVO", askUID);
+	}
 }

@@ -2,6 +2,7 @@ package com.ptk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,8 +72,32 @@ public class RestAsk {
 				result += ",";
 			}
 		}
+		if(list.isEmpty()) {
+			result = "{\"msg\":\"없음\"}";
+		}
 		
 		
+		return result;
+	}
+	//@PathVariable("askUID") Integer askUID <<<<<<<<<<<<<<<<<<<<<<<이거 url 에서 값가져오는거 중요한거
+	@RequestMapping(value = "/{askUID}", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String getAskPage(@PathVariable("askUID") Integer askUID) {
+		logger.info(askUID+"<<<<<<<<<<<<<<<<<<<");
+		AskVO ask = dao.getAskPage(askUID);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		logger.info(ask.toString());
+		String result = "";
+		result += "{\"askUID\":\""+ask.getAskUID()+"\",";
+		result += "\"userEmail\":\""+ask.getUserEmail()+"\",";
+		result += "\"subject\":\""+ask.getSubject()+"\",";
+		result += "\"category\":\""+ask.getCategory()+"\",";
+		result += "\"phone\":\""+ask.getPhone()+"\",";
+		result += "\"content\":\""+ask.getContent()+"\",";
+		result += "\"uploadDate\":\""+sdf.format(ask.getUploadDate())+"\",";
+		result += "\"file1\":\""+ask.getFile1()+"\",";
+		result += "\"file2\":\""+ask.getFile2()+"\",";
+		result += "\"file3\":\""+ask.getFile3()+"\"}";
+		logger.info(result);
 		return result;
 	}
 	

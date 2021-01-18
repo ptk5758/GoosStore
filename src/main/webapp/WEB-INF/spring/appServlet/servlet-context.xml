@@ -26,7 +26,7 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\spring\\upload"></beans:constructor-arg>
+		<beans:constructor-arg value="C:\jsp\stringproject\src\main\webapp\resources\upload"></beans:constructor-arg>
 	</beans:bean>
 	
 	

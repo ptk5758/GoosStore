@@ -92,7 +92,7 @@
 				let jsonData = data.list;
 				let result = "";
 				for(let i=0; i<jsonData.length; i++){
-					result += `<div class="leftItem" data-UID="${jsonData[i].askUID}">
+					result += `<div class="leftItem" data-UID="${jsonData[i].askUID}" onclick="viewAsk(this)">
 								<div>${jsonData[i].subject}</div>
 								</div>`;
 				}
@@ -116,7 +116,53 @@
 			}
 		});
 	});
+	/*-------------------------------질문 답변 보기--------------------*/
 	
+	let viewAsk = function(item){
+		$(function(){
+			let askuid = $(item).data('uid');
+			$.ajax({
+				url : `/RestAsk/${askuid}`,
+				type : "get",
+				dataType : "json",
+				success : function(data){
+					console.log(data);
+					let result = "";
+					result += `
+					<div class="askView">
+						<div class="askViewItem">
+							<div class="askText">제목</div>
+							<div class="askINFO">${data.subject}</div>
+						</div>
+						<div class="askViewItem">
+							<div class="askText">분류</div>
+							<div class="askINFO">${data.category}</div>
+						</div>
+						<div class="askViewItem">
+							<div class="askText">게시날짜</div>
+							<div class="askINFO">${data.uploadDate}</div>
+						</div>
+						<div class="askViewItem">
+							<div class="askText">이메일주소</div>
+							<div class="askINFO">${data.userEmail}</div>
+						</div>
+						<div class="askViewItem">
+							<div class="askText">내용</div>
+							${data.file1 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file1}"></div>`}
+							${data.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file2}"></div>`}
+							${data.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file3}"></div>`}
+							<div class="">${data.content}</div>
+						</div>
+					</div>
+					`;
+					$('.askBorderRight').html(result);
+				},
+				error : function(error){
+					console.log(error);
+				}
+			});
+		});
+	}
 	
 	
 	

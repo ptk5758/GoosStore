@@ -20,7 +20,7 @@ public class UserRestController {
 	@Inject
 	private UserDAO dao;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserRestController.class);
 	
 	@ResponseBody
 	@RequestMapping(value = "/userIDsearch", method = RequestMethod.POST, produces = "application/text; charset=utf8")

@@ -8,4 +8,5 @@ public interface AskDAO {
 	public void insertAsk(AskVO ask);
 	public List<AskVO> getAskList();
 	public AskVO getAskPage(Integer askUID);
+	public void updateAskActive(AskVO ask);
 }

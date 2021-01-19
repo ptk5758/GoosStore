@@ -12,4 +12,7 @@
 	<select id="getAskVO" resultType="AskVO">
 		select * from ask where askUID = #{askUID}
 	</select>
+	<update id="updateActive">
+		update ask set active = #{active} where askUID = #{askUID}
+	</update>
 </mapper>

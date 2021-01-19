@@ -18,6 +18,8 @@
 		</div>
 		<script>
 			sessionStorage.setItem("sessionID","${sessionID}");
+			sessionStorage.setItem("sessionLevel","${sessionLevel}");
+			sessionStorage.setItem("sessionNickName","${sessionNickName}");
 		</script>
 		<c:if test="${value == 'logout'}">
 			<sciprt>

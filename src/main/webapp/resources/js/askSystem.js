@@ -82,7 +82,7 @@
 	
 	/*-------------------------------자주 하는 질문 가져오기--------------------*/
 	let getAskList = function(){
-			$(function(){
+		$(function(){
 			$.ajax({
 			type : "GET",
 			url : "/RestAsk/",
@@ -152,6 +152,11 @@
 							${data.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file2}"></div>`}
 							${data.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file3}"></div>`}
 							<div class="">${data.content}</div>
+						</div>
+						<hr>
+						<div class="adminBorder">
+							<div class="askText">${data.subject} 의 관리자답변</div>
+							<div class="askINFO">관리자 답변내용</div>
 						</div>
 					</div>
 					`;

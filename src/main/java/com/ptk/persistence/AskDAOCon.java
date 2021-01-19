@@ -31,4 +31,10 @@ public class AskDAOCon implements AskDAO{
 	public AskVO getAskPage(Integer askUID) {
 		return sqlSession.selectOne(NAMESPACE+".getAskVO", askUID);
 	}
+	
+	@Override
+	public void updateAskActive(AskVO ask) {
+		sqlSession.update(NAMESPACE+".updateActive", ask);
+		
+	}
 }

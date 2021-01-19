@@ -13,8 +13,28 @@ public class AskVO {
 	 private String file1;
 	 private String file2;
 	 private String file3;
+	 private boolean feedback;
+	 private int active;
+	 
+	 
 	
-	 public String getSubject() {
+	 public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+	public boolean isFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(boolean feedback) {
+		this.feedback = feedback;
+	}
+
+	public String getSubject() {
 		return subject;
 	}
 

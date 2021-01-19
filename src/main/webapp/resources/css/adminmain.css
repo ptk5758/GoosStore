@@ -1,0 +1,203 @@
+@charset "UTF-8";
+body{
+	padding: 0;
+	/* background: linear-gradient(#000000, #fff); */
+	/* background: linear-gradient(rgb(240, 200, 254),rgb(204, 255, 245)); */
+	background-color: #eee;
+	width: 1200px;
+	margin: 0 auto;
+}
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotflight.woff");
+}
+@font-face{
+	font-family: "넥슨고딕";
+	src: url("/font/nexon/nexon_gothicotfbold.woff");
+	font-weight: bold;
+}
+/*-------------------------body 안부터 시작--------------------------------- */
+.container{
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 15px; 
+}
+/*------------------------- 헤더 --------------------------------- */
+.top{
+	display: flex;
+	justify-content: space-between;
+}
+.top_Title{
+	font-size: 38px;
+	font-weight: bold;
+	align-self: center;
+	cursor: pointer;
+}
+.top_Signup{
+	display: flex;
+	align-self: center;
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+}
+.top_Signup_Item{
+	margin: 15px;
+	padding: 8px;
+	cursor: pointer;
+}
+.middle{
+	min-height: 800px;
+	width: 95%;
+	margin: 0 auto;
+}
+/*------------------------- 관리자 보더 --------------------------------- */
+.adminBorder{
+	background-color: #fff;
+}
+.adminMenu{
+	display: flex;
+	justify-content: space-between;
+}
+.adminMenu_Item{
+	width: 25%;
+	font-size: 24px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 0.8em;
+	align-self: center;
+	text-align: center;
+	background-color: #000000;
+	color: #fff;
+	cursor: pointer;
+}
+.adminContent{
+	min-height: 500px;
+}
+/*-----------------------질문답변-------------------------------*/
+.admin_AskListBorder{
+	padding-top: 1.2em;
+}
+.admin_AskList{
+	display: flex;
+	justify-content: space-between;
+	width: 95%;
+	margin: 0 auto;
+	font-size: 20px;
+	border: 1px solid #000000;
+	padding: 8px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+.admin_AskList:hover{
+	background-color: #c3c3c3;
+}
+.admin_AskListItem_Num{
+	width: 5%;
+	text-align: center;
+	font-weight: bold;
+}
+.admin_AskListItem_Category{
+	width: 15%;
+	text-align: center;
+}
+.admin_AskListItem_Subject{
+	width: 40%;
+	text-align: center;
+}
+.admin_AskListItem_UserEmail{
+	width: 30%;
+	text-align: center;
+}
+.admin_AskListItem_FeedBack{
+	width: 10%;
+	text-align: center;
+	font-weight: bold;
+}
+/*----------------------질문답변 뷰페이지----------------------------  */
+.admin_ViewAsk{
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.askImg img{
+	max-height: 220px;
+	max-width: 220px;
+}
+.admin_ViewAskItem{
+	margin: 1.2em;
+}
+.admin_ViewAskItem_Text{
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+}
+.admin_ViewAskItem_askcontent{
+	border: 3px solid#000000;
+	border-radius: 15px 15px 15px 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 22px;
+	padding: 1.2em;
+}
+.admin_ViewAskButton{
+	display: flex;
+	margin: 1.2em;
+}
+.admin_ViewAskButton > div {
+	margin: 0.6em;
+}
+.admin_ViewAskButton input {
+	padding: 0.6em;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	background-color: #77c6e8;
+	border: 0px solid#000000;
+	color: #fff;
+	border-radius: 15px;
+	cursor: pointer;
+}
+.admin_ViewAskButton input:hover{
+	background-color: #51b6e1;
+}
+.admin_ViewAskButton input:focus {
+	border: none;
+	outline: none;
+}
+.admin_FeedTextarea{
+	width: 95%;
+	margin: 0 auto;
+}
+.admin_FeedTextarea textarea{
+	width: 100%;
+	min-height: 150px;
+	font-size: 18px;
+	
+}
+.admin_FeedSendButton{
+	margin: 1.2em;
+	display: flex;
+}
+.admin_FeedSendButton input{
+	background-color: #444444;
+	color: #fff;
+	border: 0px solid#444444;
+	padding: 8px;
+	font-size: 22px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	margin: 0.8em;
+}
+.admin_FeedSendButton input:focus {
+	outline: none;
+}
+
+
+
+
+
+
+

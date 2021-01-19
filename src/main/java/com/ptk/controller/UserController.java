@@ -1,7 +1,6 @@
 package com.ptk.controller;
 
 import javax.inject.Inject;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

@@ -1,11 +1,8 @@
 package com.ptk.persistence;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.ptk.domain.AttendVO;
-import com.ptk.domain.UserVO;
 
 public interface AttendDAO {
 	

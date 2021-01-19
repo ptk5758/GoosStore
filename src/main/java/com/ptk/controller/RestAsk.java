@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +35,14 @@ public class RestAsk {
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
-	
+	/**
+	 * #질문답변에 양식에 맞춰 데이터베이스에 입력하는 메서드 입니다.
+	 * @param files 
+	 * @param ask
+	 * @return
+	 * @throws IOException
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping(value = "",method = RequestMethod.POST)
 	public String insertASK(@RequestParam("file") MultipartFile[] files, AskVO ask) throws IOException, Exception {
@@ -56,6 +64,10 @@ public class RestAsk {
 		return "{\"msg\":\"접수되었습니다.\"}";
 	}
 	
+	/**
+	 * #DB에서 질문답변의 모든리스트를 읽어오는 메서드 입니다.
+	 * @return
+	 */
 	@RequestMapping(value = "",method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	public String getAskList() {
 		String result;
@@ -65,6 +77,9 @@ public class RestAsk {
 			AskVO ask = list.get(i);
 			result += "{\"askUID\":\""+ask.getAskUID()+"\",";
 			result += "\"subject\":\""+ask.getSubject()+"\",";
+			result += "\"feedback\":\""+ask.isFeedback()+"\",";
+			result += "\"userEmail\":\""+ask.getUserEmail()+"\",";
+			result += "\"active\":\""+ask.getActive()+"\",";
 			result += "\"category\":\""+ask.getCategory()+"\"}";
 			if(i+1 == list.size()) {
 				result += "]}";
@@ -79,6 +94,11 @@ public class RestAsk {
 		
 		return result;
 	}
+	/**
+	 * #그 질문답변의 게실글에 대한 모든 정보를 읽어옵니다
+	 * @param askUID 질문 유니크 ID
+	 * @return
+	 */
 	//@PathVariable("askUID") Integer askUID <<<<<<<<<<<<<<<<<<<<<<<이거 url 에서 값가져오는거 중요한거
 	@RequestMapping(value = "/{askUID}", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	public String getAskPage(@PathVariable("askUID") Integer askUID) {
@@ -94,6 +114,7 @@ public class RestAsk {
 		result += "\"phone\":\""+ask.getPhone()+"\",";
 		result += "\"content\":\""+ask.getContent()+"\",";
 		result += "\"uploadDate\":\""+sdf.format(ask.getUploadDate())+"\",";
+		result += "\"active\":\""+ask.getActive()+"\",";
 		result += "\"file1\":\""+ask.getFile1()+"\",";
 		result += "\"file2\":\""+ask.getFile2()+"\",";
 		result += "\"file3\":\""+ask.getFile3()+"\"}";
@@ -101,6 +122,25 @@ public class RestAsk {
 		return result;
 	}
 	
+	@RequestMapping(value = "/{askUID}", method = RequestMethod.PATCH, produces = "application/text; charset=UTF-8")
+	public String askActiveUpdate(@PathVariable("askUID")Integer askUID, @RequestParam("active") Integer active) {
+		//logger.info(askUID+"<<<<<<<<<<<<<<<<");
+		//logger.info(active+"<<<<<<<<<<<<<<");
+		AskVO ask = new AskVO();
+		ask.setAskUID(askUID);
+		ask.setActive(active);
+		//logger.info(ask.toString()+"<<<<<<<<<<<<");
+		dao.updateAskActive(ask);
+		return "성공";
+	}
+	
+	/**
+	 * 업로드 하는 메서드
+	 * @param originalName
+	 * @param fileData
+	 * @return
+	 * @throws Exception
+	 */
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + originalName;
@@ -110,4 +150,6 @@ public class RestAsk {
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 	}
+	
+	
 }

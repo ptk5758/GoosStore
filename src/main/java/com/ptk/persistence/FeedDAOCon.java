@@ -1,5 +1,7 @@
 package com.ptk.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,5 +19,10 @@ public class FeedDAOCon implements FeedDAO{
 	@Override
 	public void insertFeed(FeedVO feed) {
 		sqlSession.insert(NAMESPACE+".insertFeed", feed);
+	}
+	
+	@Override
+	public List<FeedVO> getFeedList(Integer askUID) {
+		return sqlSession.selectList(NAMESPACE+".getFeedList", askUID);
 	}
 }

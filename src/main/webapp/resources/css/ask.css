@@ -181,6 +181,23 @@ select:focus{
 .askContent{
 	font-size: 22px;
 }
+.adminFeed{
+	border: 3px solid#000000;
+	border-radius: 15px 15px 15px 15px;
+	padding: 0.8em;
+}
+.adminFeedItem{
+	font-size: 18px;
+}
+.adminName{
+	margin: 0.4em;
+}
+.adminFeedDate{
+	margin: 0.4em;
+}
+.adminContent{
+	margin: 0.4em;
+}
 
 
 

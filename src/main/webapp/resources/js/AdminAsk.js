@@ -103,7 +103,7 @@
 				type : "PATCH",
 				suesuccess : function(data){
 					console.log(data);
-					alert("처리되었습니다.");
+					alert("성공");
 				},
 				error : function(error){
 					console.log(error);
@@ -149,6 +149,12 @@
 			alert("답변작성이 완료되었습니다.");
 			$('#a').html("답변완료");
 			$('.admin_ViewAskItem_askcontent').html("<h1>답변완료</h1>");
+			$.ajax({
+				url: `/RestAsk/${askUID}?active=3`,
+				type: "PATCH",
+				success : function(data){console.log(data);},
+				error: function(error){console.log("알수없는 오류로 인헤 실패");}
+			});
 		});
 	}
 	

@@ -122,6 +122,12 @@ public class RestAsk {
 		return result;
 	}
 	
+	/**
+	 * ask 의 답변상태를 업로드 하는메서드입니다
+	 * @param askUID ask글의 유니크 ID
+	 * @param active 변경할 값 2 읽음 3답변완료
+	 * @return
+	 */
 	@RequestMapping(value = "/{askUID}", method = RequestMethod.PATCH, produces = "application/text; charset=UTF-8")
 	public String askActiveUpdate(@PathVariable("askUID")Integer askUID, @RequestParam("active") Integer active) {
 		//logger.info(askUID+"<<<<<<<<<<<<<<<<");

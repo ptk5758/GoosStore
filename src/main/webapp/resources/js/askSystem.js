@@ -89,14 +89,18 @@
 			dataType : "JSON",
 			success : function(data){
 				console.log(data);
-				let jsonData = data.list;
-				let result = "";
-				for(let i=0; i<jsonData.length; i++){
-					result += `<div class="leftItem" data-UID="${jsonData[i].askUID}" onclick="viewAsk(this)">
-								<div>${jsonData[i].subject}</div>
-								</div>`;
+				if(data.msg === "없음"){
+					console.log("없음");
+				}else{
+					let jsonData = data.list;
+					let result = "";
+					for(let i=0; i<jsonData.length; i++){
+						result += `<div class="leftItem" data-UID="${jsonData[i].askUID}" onclick="viewAsk(this)">
+									<div>${jsonData[i].subject}</div>
+									</div>`;
+					}
+					$('.askBorderLeft').append(result);
 				}
-				$('.askBorderLeft').append(result);
 			},
 			error : function(error){
 				console.log(error);
@@ -155,12 +159,16 @@
 						</div>
 						<hr>
 						<div class="adminBorder">
-							<div class="askText">${data.subject} 의 관리자답변</div>
-							<div class="askINFO">관리자 답변내용</div>
+							<div class="askText">운영자답변</div>
+							<div class="adminFeed" id="adminFeed">관리자 답변내용</div>
+							
 						</div>
 					</div>
 					`;
 					$('.askBorderRight').html(result);
+					if(data.active == 3){getAdminFeed(data.askUID);}
+					if(data.active == 2){console.log("읽음");}
+					if(data.active == 1){console.log("답변대기중");}
 				},
 				error : function(error){
 					console.log(error);
@@ -168,7 +176,36 @@
 			});
 		});
 	}
-	
+	let getAdminFeed = function(uid){
+		console.log(uid);
+		let xhp = new XMLHttpRequest;
+		xhp.open("GET", `/AdminFeed/${uid}`, true);
+		xhp.send(null);
+		xhp.onreadystatechange = () => {
+			if(xhp.readyState === 4 && xhp.status === 200){
+				let data = xhp.responseText;
+				console.log(data);
+				let result = "";
+				let jsonData = JSON.parse(data);
+				for(let i=0; i<jsonData.list.length; i++){
+					let list = jsonData.list[i];
+					result += `
+						<div class="adminFeedItem">
+							<div class="adminName">관리자 ${list.admin}</div>
+							<div class="adminFeedDate">답변날짜 ${list.feedDate}</div>
+							<div style="font-size: 22px; font-weight:bold; margin: 0.4em;">내용</div>
+							<div class="adminContent">${list.content}</div>
+							${list.file1 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file1}"></div>`}
+							${list.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file2}"></div>`}
+							${list.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file3}"></div>`}
+						</div>
+					`;
+				}
+				console.log(result);
+				document.getElementById('adminFeed').innerHTML = result;
+			}
+		}
+	}
 	
 	
 	

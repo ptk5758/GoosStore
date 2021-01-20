@@ -6,4 +6,7 @@
 	<insert id="insertFeed">
 		insert into feed (askUID,admin,content,file1,file2,file3) values (#{askUID},#{admin},#{content},#{file1},#{file2},#{file3})
 	</insert>
+	<select id="getFeedList" resultType="FeedVO">
+		select * from feed where askUID = #{askUID}
+	</select>
 </mapper>

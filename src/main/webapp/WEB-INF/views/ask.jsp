@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="/css/ask.css">
+<link rel="stylesheet" type="text/css" href="/css/ask.css?ver=1">
 	<div class="ask">
 		<div><h1 style="color: #fff;">질문답변</h1></div>
 		<div class="askBorder">
@@ -76,7 +76,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="/js/askSystem.js"></script>
+	<script src="/js/askSystem.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		
 

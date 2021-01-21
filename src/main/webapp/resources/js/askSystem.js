@@ -50,7 +50,9 @@
 				xhp.open("POST", "/RestAsk/", true);
 				xhp.send(formData);
 				alert("접수가 완료되었습니다.");
-				getAskList();				
+				getAskList();
+				$('#sendButton').css("pointer-events","none");
+				
 			} else {
 				alert("약관에 동의해주시길 바랍니다.");
 				return;
@@ -93,13 +95,13 @@
 					console.log("없음");
 				}else{
 					let jsonData = data.list;
-					let result = "";
+					let result = "<div class='borderTop'>자주하는질문</div>";
 					for(let i=0; i<jsonData.length; i++){
 						result += `<div class="leftItem" data-UID="${jsonData[i].askUID}" onclick="viewAsk(this)">
 									<div>${jsonData[i].subject}</div>
 									</div>`;
 					}
-					$('.askBorderLeft').append(result);
+					$('.askBorderLeft').html(result);
 				}
 			},
 			error : function(error){
@@ -152,9 +154,9 @@
 						</div>
 						<div class="askViewItem">
 							<div class="askText">내용</div>
-							${data.file1 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file1}"></div>`}
-							${data.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file2}"></div>`}
-							${data.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file3}"></div>`}
+							${data.file1 === "null" ? "":`<div class="askImg"><img src="/6/${data.file1}"></div>`}
+							${data.file2 === "null" ? "":`<div class="askImg"><img src="/6/${data.file2}"></div>`}
+							${data.file3 === "null" ? "":`<div class="askImg"><img src="/6/${data.file3}"></div>`}
 							<div class="">${data.content}</div>
 						</div>
 						<hr>
@@ -195,9 +197,9 @@
 							<div class="adminFeedDate">답변날짜 ${list.feedDate}</div>
 							<div style="font-size: 22px; font-weight:bold; margin: 0.4em;">내용</div>
 							<div class="adminContent">${list.content}</div>
-							${list.file1 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file1}"></div>`}
-							${list.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file2}"></div>`}
-							${list.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${list.file3}"></div>`}
+							${list.file1 === "null" ? "":`<div class="askImg"><img src="/6/${list.file1}"></div>`}
+							${list.file2 === "null" ? "":`<div class="askImg"><img src="/6/${list.file2}"></div>`}
+							${list.file3 === "null" ? "":`<div class="askImg"><img src="/6/${list.file3}"></div>`}
 						</div>
 					`;
 				}
@@ -207,14 +209,10 @@
 		}
 	}
 	
+	/*$('.askBorderRight').html("<h1>접수완료!!</h1>");*/
 	
 	
-	
-	
-	
-	
-	
-	
+	/*로컬전용 이미지 경로 /upload/{yourIMG}    */
 	
 	
 	

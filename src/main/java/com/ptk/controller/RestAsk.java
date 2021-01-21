@@ -112,7 +112,7 @@ public class RestAsk {
 		result += "\"subject\":\""+ask.getSubject()+"\",";
 		result += "\"category\":\""+ask.getCategory()+"\",";
 		result += "\"phone\":\""+ask.getPhone()+"\",";
-		result += "\"content\":\""+ask.getContent()+"\",";
+		result += "\"content\":\""+ask.getContent().replaceAll(System.getProperty("line.separator"), " ")+"\",";
 		result += "\"uploadDate\":\""+sdf.format(ask.getUploadDate())+"\",";
 		result += "\"active\":\""+ask.getActive()+"\",";
 		result += "\"file1\":\""+ask.getFile1()+"\",";

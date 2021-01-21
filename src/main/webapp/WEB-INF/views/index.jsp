@@ -15,6 +15,7 @@
 				<div><input id="twitchID"><button id="testbutton">전송</button></div>
 				<img id="testimg">
 			</div>
+			<h1>포토폴리오용도의 사이트입니다.</h1>
 		</div>
 		<script>
 			sessionStorage.setItem("sessionID","${sessionID}");

@@ -72,9 +72,9 @@
 						<div class="admin_ViewAskItem">
 							<div class="admin_ViewAskItem_Text" id="a">문의 내용</div>
 							<div class="admin_ViewAskItem_askcontent">
-								${data.file1 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file1}"></div>`}
-								${data.file2 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file2}"></div>`}
-								${data.file3 === "null" ? "":`<div class="askImg"><img src="/upload/${data.file3}"></div>`}
+								${data.file1 === "null" ? "":`<div class="askImg"><img src="/6/${data.file1}"></div>`}
+								${data.file2 === "null" ? "":`<div class="askImg"><img src="/6/${data.file2}"></div>`}
+								${data.file3 === "null" ? "":`<div class="askImg"><img src="/6/${data.file3}"></div>`}
 								<div>${data.content}</div>
 							</div>							
 						</div>

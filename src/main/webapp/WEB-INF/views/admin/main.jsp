@@ -21,7 +21,7 @@
 				alert(welcome);
 			}
 		</script>
-		<script src="/js/AdminAsk.js"></script>
+		<script src="/js/AdminAsk.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/admin/include/adminfooter.jsp"%>
 		
 

@@ -1,0 +1,137 @@
+[33mcommit 3ef14078e1d200b1f673226886fc5b1f997b8b2e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: ptk <pty5758@naver.com>
+Date:   Thu Jan 21 10:43:55 2021 +0900
+
+    freeptk.shop hosting File set
+
+[33mcommit 3f82bf5c5a0e28f9f844316a31b1e5ad72007346[m
+Author: ptk <pty5758@naver.com>
+Date:   Wed Jan 20 14:06:10 2021 +0900
+
+    feed 80%
+
+[33mcommit 647d02a104627d7ae0ce523fb05c0f4e5a56ca2a[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 19 16:47:21 2021 +0900
+
+    feed start
+
+[33mcommit 706867db79774f3352ccb1b14caa726c6a9274aa[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 18 16:31:37 2021 +0900
+
+    AskView Page80%
+
+[33mcommit b4b01ba44edc867b0a6b15c69675d409cb7aa575[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 18 14:14:39 2021 +0900
+
+    ask Insert End
+
+[33mcommit 76ed0f968d0a01fe3fe609fdce10ae027f7b27f3[m
+Author: ptk <pty5758@naver.com>
+Date:   Fri Jan 15 16:55:56 2021 +0900
+
+    ask_Start
+
+[33mcommit 5077d7684a478921a986185581bd697d5b06068e[m
+Author: ptk <pty5758@naver.com>
+Date:   Fri Jan 15 11:21:01 2021 +0900
+
+    attend 99%
+
+[33mcommit df1a978c05c6ea0e5aaf88d53ac9e8ad25bd2720[m
+Author: ptk <pty5758@naver.com>
+Date:   Thu Jan 14 16:52:44 2021 +0900
+
+    Attend board 95%
+
+[33mcommit ccb3ea7781427f1662ab3aff8d747755cc97ef26[m
+Author: ptk <pty5758@naver.com>
+Date:   Wed Jan 13 16:01:14 2021 +0900
+
+    Attend datemodify
+
+[33mcommit 6aaf7dce78960c3f23ff61fa5bbdac2082ed1082[m
+Author: ptk <pty5758@naver.com>
+Date:   Wed Jan 13 13:23:20 2021 +0900
+
+    출석체크
+
+[33mcommit dbda030fbe7da5933d6b889739b49d96f1840cfb[m
+Author: ptk <pty5758@naver.com>
+Date:   Wed Jan 13 10:00:18 2021 +0900
+
+    Attend_B
+
+[33mcommit c0bb9285bbfe9bbd9756bc1736c4c971fe0af2ba[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 12 17:18:49 2021 +0900
+
+    attend Insert beta
+
+[33mcommit aa10269412e35c59444a41b6d854e8c3387df44c[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 12 15:36:02 2021 +0900
+
+    AttendRest Update
+
+[33mcommit c2bb0783329d3253a00d462e26a851ff512ca701[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 12 11:00:55 2021 +0900
+
+    Attend Update
+
+[33mcommit c2e9c315bf9159b7704ca5054bf224b34658c089[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 12 09:11:49 2021 +0900
+
+    Attend_jsp add
+
+[33mcommit 0fcbfb0d9c70c508a8df3dbea353c1389d7d8861[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 11 17:18:09 2021 +0900
+
+    2021_01_11
+
+[33mcommit d96dd775c164b4e2489ed7e94a2560a74c4b7d32[m
+Author: ptk <pty5758@naver.com>
+Date:   Tue Jan 5 17:27:00 2021 +0900
+
+    2021_01_05
+
+[33mcommit 52dd4c51f7e1b099d987fcea8a298f64895b671b[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 4 17:22:37 2021 +0900
+
+    midCat_추가
+
+[33mcommit bc447d8ad1ff3a60fa24edfd4d651dd38d846711[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 4 15:39:00 2021 +0900
+
+    shop_css
+
+[33mcommit f7235684039227dc069fe1ee7a9573c08719a4c4[m
+Author: ptk <pty5758@naver.com>
+Date:   Mon Jan 4 14:32:09 2021 +0900
+
+    2021_01_04
+
+[33mcommit 6c905ab75fac56a95df0509ee40f81f73f474d20[m
+Author: ptk <pty5758@naver.com>
+Date:   Thu Dec 31 16:51:32 2020 +0900
+
+    sqllocation_update
+
+[33mcommit 5e9a209b94f44c07ac60f1898901c9287231ece5[m
+Author: ptk <pty5758@naver.com>
+Date:   Thu Dec 31 11:58:54 2020 +0900
+
+    2020_12_31_modify
+
+[33mcommit 5fe57c45dccb11c0f9c3e8cc99dfcbaf42f24df8[m
+Author: ptk <pty5758@naver.com>
+Date:   Thu Dec 31 11:50:51 2020 +0900
+
+    hello git

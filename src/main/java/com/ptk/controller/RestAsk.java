@@ -112,7 +112,7 @@ public class RestAsk {
 		result += "\"subject\":\""+ask.getSubject()+"\",";
 		result += "\"category\":\""+ask.getCategory()+"\",";
 		result += "\"phone\":\""+ask.getPhone()+"\",";
-		result += "\"content\":\""+ask.getContent().replaceAll(System.getProperty("line.separator"), " ")+"\",";
+		result += "\"content\":\""+ask.getContent().replaceAll("\n", "")+"\",";//	replaceAll(System.getProperty("line.separator"), " ") 문자열안의 엔터키 처리할때
 		result += "\"uploadDate\":\""+sdf.format(ask.getUploadDate())+"\",";
 		result += "\"active\":\""+ask.getActive()+"\",";
 		result += "\"file1\":\""+ask.getFile1()+"\",";

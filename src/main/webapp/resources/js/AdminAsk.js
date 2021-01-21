@@ -11,20 +11,48 @@
 			url : "/RestAsk/",
 			dataType : "JSON",
 			success : function(data){
+				let totalcount = data.count;
 				let result = "<div class='admin_AskListBorder'>";
-				console.log(data.list);
+				result += `
+					<div class="admin_searchOption">
+						<div>
+							<select onchange="viewLimit(this)">
+								<option>All</option>
+								<option>5</option>
+								<option>10</option>								
+							</select>
+						</div>
+						<div>
+							<select>
+								<option>카테고리 선택</option>
+								<option>기타</option>
+								<option>채용문의</option>
+								<option>상품문의</option>
+								<option>기능문의</option>								
+							</select>
+						</div>
+						<div>
+							<input placeholder="제목">
+						</div>
+						<div>
+							<button>검색하기</button>
+						</div>
+					</div>
+					<div id="admin_AskBorder">
+				`;
 				let jsondata = data.list;
 				for(let i=0; i<jsondata.length; i++){
 					result += `
 						<div class="admin_AskList" data-uid="${jsondata[i].askUID}" onclick="viewAsk(this)">
-							<div class="admin_AskListItem_Num">1</div>
+							<div class="admin_AskListItem_Num">${totalcount}</div>
 							<div class="admin_AskListItem_Category">${jsondata[i].category}</div>
 							<div class="admin_AskListItem_Subject">${jsondata[i].subject}</div>
 							<div class="admin_AskListItem_UserEmail">${jsondata[i].userEmail}</div>
 							<div class="admin_AskListItem_FeedBack">${jsondata[i].active == 1 ? "미답변": jsondata[i].active == 2 ? "읽음":"답변완료"}</div>
 						</div>`;
+					totalcount--;
 				}
-				result += "</div>";
+				result += "</div></div>";
 				$('.adminContent').html(result);
 			},
 			error : function(error){
@@ -158,7 +186,41 @@
 		});
 	}
 	
-	
+	let viewLimit = function(item){
+		console.log(item.value);
+		
+		if(item.value === "All"){
+			getAskList();
+		} else {
+			let limit = item.value;
+			let xhp = new XMLHttpRequest();
+			xhp.open("GET", '/RestAsk/?page='+limit, true);
+			xhp.send(null);
+			xhp.onreadystatechange = () => {
+				if(xhp.readyState === 4 && xhp.status === 200){
+					let data = JSON.parse(xhp.responseText);
+					console.log(data);
+					let list = data.list;
+					let totalcount = data.count;
+					let result = "";
+					for(let i=0; i<list.length; i++){
+						let item = list[i];
+						result += `
+						<div class="admin_AskList" data-uid="${item.askUID}" onclick="viewAsk(this)">
+							<div class="admin_AskListItem_Num">${totalcount}</div>
+							<div class="admin_AskListItem_Category">${item.category}</div>
+							<div class="admin_AskListItem_Subject">${item.subject}</div>
+							<div class="admin_AskListItem_UserEmail">${item.userEmail}</div>
+							<div class="admin_AskListItem_FeedBack">${item.active == 1 ? "미답변": item.active == 2 ? "읽음":"답변완료"}</div>
+						</div>`;
+						totalcount--;
+					}
+					document.getElementById('admin_AskBorder').innerHTML = result;
+					
+				}
+			}
+		}
+	}
 	
 	
 	

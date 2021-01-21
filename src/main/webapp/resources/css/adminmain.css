@@ -76,6 +76,7 @@ body{
 /*-----------------------질문답변-------------------------------*/
 .admin_AskListBorder{
 	padding-top: 1.2em;
+	padding-bottom: 1.2em;
 }
 .admin_AskList{
 	display: flex;
@@ -112,6 +113,35 @@ body{
 	width: 10%;
 	text-align: center;
 	font-weight: bold;
+}
+.admin_searchOption{
+	display: flex;
+	width: 90%;
+	margin: 0 auto;
+	padding: 0.8em;
+	border: 2px solid#000000;
+	margin-bottom: 0.8em;
+}
+.admin_searchOption div {
+	margin: 8px;
+}
+.admin_searchOption select{
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 0.4em;
+}
+.admin_searchOption input{
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 0.4em;
+}
+.admin_searchOption button{
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 0.4em;
 }
 /*----------------------질문답변 뷰페이지----------------------------  */
 .admin_ViewAsk{

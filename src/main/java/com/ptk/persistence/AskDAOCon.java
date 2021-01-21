@@ -28,6 +28,11 @@ public class AskDAOCon implements AskDAO{
 	}
 	
 	@Override
+	public List<AskVO> getAskList(int page) {
+		return sqlSession.selectList(NAMESPACE+".getAskList_limit", page);
+	}
+	
+	@Override
 	public AskVO getAskPage(Integer askUID) {
 		return sqlSession.selectOne(NAMESPACE+".getAskVO", askUID);
 	}
@@ -37,4 +42,10 @@ public class AskDAOCon implements AskDAO{
 		sqlSession.update(NAMESPACE+".updateActive", ask);
 		
 	}
+	
+	@Override
+	public int getAskCount() {
+		return sqlSession.selectOne(NAMESPACE+".askCount");
+	}
+	
 }

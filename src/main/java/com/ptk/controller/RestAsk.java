@@ -71,7 +71,7 @@ public class RestAsk {
 	@RequestMapping(value = "",method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	public String getAskList() {
 		String result;
-		result = "{\"list\":[";
+		result = "{\"count\":\""+getAskCount()+"\",\"list\":[";
 		List<AskVO> list = dao.getAskList();
 		for(int i=0; i<list.size(); i++) {
 			AskVO ask = list.get(i);
@@ -90,8 +90,33 @@ public class RestAsk {
 		if(list.isEmpty()) {
 			result = "{\"msg\":\"없음\"}";
 		}
-		
-		
+		return result;
+	}
+	
+	@RequestMapping(value = "",method = RequestMethod.GET, produces = "application/text; charset=UTF-8", params = {"page"})
+	public String getAskList(@RequestParam("page") Integer page) {
+		logger.info(page+"<<<<<<<<<<<<<<<<<<222222222");
+		String result;
+		result = "{\"count\":\""+getAskCount()+"\",\"list\":[";
+		List<AskVO> list = dao.getAskList(page);
+		for(int i=0; i<list.size(); i++) {
+			AskVO ask = list.get(i);
+			result += "{\"askUID\":\""+ask.getAskUID()+"\",";
+			result += "\"subject\":\""+ask.getSubject()+"\",";
+			result += "\"feedback\":\""+ask.isFeedback()+"\",";
+			result += "\"userEmail\":\""+ask.getUserEmail()+"\",";
+			result += "\"active\":\""+ask.getActive()+"\",";
+			result += "\"category\":\""+ask.getCategory()+"\"}";
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+		}
+		if(list.isEmpty()) {
+			result = "{\"msg\":\"없음\"}";
+		}
+		logger.info(result);
 		return result;
 	}
 	/**
@@ -108,7 +133,7 @@ public class RestAsk {
 		logger.info(ask.toString());
 		String content;
 		content = ask.getContent();
-		content.replaceAll("\n","");
+		content.replaceAll("\n","&#10;");
 		content.replaceAll("\"", "&#34;");
 		content.replaceAll(",", "&#44;");
 		String result = "";
@@ -143,6 +168,13 @@ public class RestAsk {
 		//logger.info(ask.toString()+"<<<<<<<<<<<<");
 		dao.updateAskActive(ask);
 		return "성공";
+	}
+	
+	public int getAskCount() {
+		int result;
+		result = dao.getAskCount();
+		logger.info(result+"<<<<<<<<<<<<<<<<<<<<<<");
+		return result;
 	}
 	
 	/**

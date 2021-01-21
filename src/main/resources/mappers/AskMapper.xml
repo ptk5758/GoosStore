@@ -9,10 +9,16 @@
 	<select id="getAskList" resultType="AskVO">
 		select * from ask
 	</select>
+	<select id="getAskList_limit" resultType="AskVO">
+		select * from ask limit 0,#{page}
+	</select>
 	<select id="getAskVO" resultType="AskVO">
 		select * from ask where askUID = #{askUID}
 	</select>
 	<update id="updateActive">
 		update ask set active = #{active} where askUID = #{askUID}
 	</update>
+	<select id="askCount" resultType="int">
+		select count(*) from ask
+	</select>
 </mapper>

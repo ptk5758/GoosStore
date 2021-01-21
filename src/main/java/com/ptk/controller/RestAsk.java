@@ -106,13 +106,18 @@ public class RestAsk {
 		AskVO ask = dao.getAskPage(askUID);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		logger.info(ask.toString());
+		String content;
+		content = ask.getContent();
+		content.replaceAll("\n","");
+		content.replaceAll("\"", "&#34;");
+		content.replaceAll(",", "&#44;");
 		String result = "";
 		result += "{\"askUID\":\""+ask.getAskUID()+"\",";
 		result += "\"userEmail\":\""+ask.getUserEmail()+"\",";
 		result += "\"subject\":\""+ask.getSubject()+"\",";
 		result += "\"category\":\""+ask.getCategory()+"\",";
 		result += "\"phone\":\""+ask.getPhone()+"\",";
-		result += "\"content\":\""+ask.getContent().replaceAll("\n", "")+"\",";//	replaceAll(System.getProperty("line.separator"), " ") 문자열안의 엔터키 처리할때
+		result += "\"content\":\""+ask.getContent().replaceAll("\n", "").replaceAll("\"", "&#34;").replaceAll(",", "&#44;")+"\",";//	replaceAll(System.getProperty("line.separator"), " ") 문자열안의 엔터키 처리할때
 		result += "\"uploadDate\":\""+sdf.format(ask.getUploadDate())+"\",";
 		result += "\"active\":\""+ask.getActive()+"\",";
 		result += "\"file1\":\""+ask.getFile1()+"\",";

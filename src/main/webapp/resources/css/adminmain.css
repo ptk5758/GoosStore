@@ -70,6 +70,9 @@ body{
 	color: #fff;
 	cursor: pointer;
 }
+.adminMenu_Item:hover{
+	color:#e2e2e2;
+}
 .adminContent{
 	min-height: 500px;
 }
@@ -119,7 +122,7 @@ body{
 	width: 90%;
 	margin: 0 auto;
 	padding: 0.8em;
-	border: 2px solid#000000;
+	border: 0px solid#000000;
 	margin-bottom: 0.8em;
 }
 .admin_searchOption div {
@@ -342,6 +345,12 @@ body{
 .userIMG img{
 	width: 15px;
 	height: 15px;
+}
+.closeButton{
+	font-size: 22px;
+	font-weight: bold;
+	border-radius: 8px;
+	padding: 4px;
 }
 
 

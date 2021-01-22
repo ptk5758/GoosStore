@@ -92,7 +92,7 @@
 						</div>
 						<div class="userIMG">
 							<div><img src="/img/2222.png"></div>
-							<div onclick="viewUser_close()">닫기</div>
+							<div><button class="closeButton" onclick="viewUser_close()">닫기</button></div>
 						</div>
 					`;
 					

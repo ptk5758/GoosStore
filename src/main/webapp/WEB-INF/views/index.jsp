@@ -34,49 +34,6 @@
 			if(welcome != ''){
 				alert(welcome);
 			}
-			
-			$(document).ready(function(){
-				$('#testbutton').click(function(){
-					var userID = $('#twitchID').val();
-					$.ajax({
-					    url:"https://api.twitch.tv/kraken/users",
-					   	data: "login="+userID,
-					    type: "GET",
-					    dataType: "json",
-					    headers:{
-					    	"Accept": "application/vnd.twitchtv.v5+json",
-					    	"Client-ID":"uf511d87ct32hi49t0daya01m3xva6"
-					    },
-					    success : function(data){
-					    	var user1 = data.users[0].display_name;
-					    	console.log(data.users[0]);
-					    	let str = user1+"님환영합니다.";
-					    	$('#userText').html(str);
-					    	$('#testimg').attr("src",data.users[0].logo);
-					    },
-					    error : function(error) {
-				        	console.log(error);
-				        }
-					});
-				});//testbutton.click
-				$('#test').click(function(){
-					let jsondata = {key:"401EFF3EAE50A2D33FB2E62249BF9B62",steamid:"76561198065106456",appid:"105600"};
-					console.log(jsondata);
-					 $.ajax({
-					    url:"https://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/",
-					   	data: jsondata,
-					   	contentType: "application/json; charset=utf-8",
-					    type: "GET",
-					    dataType: "json",
-					    success : function(data){
-					    	console.log(data);
-					    },
-					    error : function(error) {
-				        	console.log(error);
-				        }
-					});
-				});
-			});
 		</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		

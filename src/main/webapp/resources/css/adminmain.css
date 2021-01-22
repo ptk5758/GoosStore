@@ -224,9 +224,125 @@ body{
 .admin_FeedSendButton input:focus {
 	outline: none;
 }
-
-
-
+/*----------------------어드민 유저관리 페이지----------------------------  */
+.Admin_UserList{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.Admin_User{
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	border: 0px solid#000000;
+	font-size: 22px;
+	margin: 0.8em;
+	background-color: #e2f2fa;
+	border-radius: 75px 35px 35px 75px;
+	color: #525252;
+	cursor: pointer;
+	position: relative;
+}
+.Admin_User{
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+	border: 0px solid#000000;
+	font-size: 22px;
+	margin: 0.8em;
+	background-color: #e2f2fa;
+	border-radius: 75px 35px 35px 75px;
+	color: #525252;
+	cursor: pointer;
+	position: relative;
+}
+.Admin_User:hover{
+	background-color: #bce1f3;
+}
+.Admin_User_Num{
+	width: 5%;
+	text-align: center;
+}
+.circle{
+	background-color: #25a3d8;
+	color: #fff;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid#fff;
+}
+.circle > div {
+	text-align: center;
+}
+.Admin_User_Name{
+	width: 20%;
+	text-align: center;
+	align-self: center;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+}
+.Admin_User_ID{
+	width: 25%;
+	text-align: center;
+	align-self: center;
+}
+.Admin_User_NickName{
+	width: 35%;
+	text-align: center;
+	align-self: center;
+}
+.Admin_User_Email{
+	width: 40%;
+	text-align: center;
+	align-self: center;
+}
+.Admin_User_Level{
+	width: 25%;
+	text-align: center;
+	align-self: center;
+}
+/*---------------------유저 상세보기-----------------------  */
+.Admin_ViewUserBorder{
+	position: absolute;
+	background-color: #fff;
+	border-radius: 35px;
+	width: 100%;
+	top: 105%;
+	z-index: 10;
+	border: 2px solid#eee;
+	height: 500px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 15px;
+	padding: 8px;
+	
+}
+.userINFO{
+	padding: 1.2em;
+	border: 1px solid#fff;
+	background-color: #edf7fc;
+	border-radius: 35px;
+}
+.INFO_title{
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	font-size: 22px;
+}
+.userIMG{
+	padding: 1.2em;
+	border: 0px solid#fff;
+	background-color: #e2defb;
+	border-radius: 35px;
+}
+.userIMG img{
+	width: 15px;
+	height: 15px;
+}
 
 
 

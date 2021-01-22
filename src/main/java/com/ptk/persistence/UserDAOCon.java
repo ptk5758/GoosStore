@@ -62,4 +62,9 @@ public class UserDAOCon implements UserDAO{
 	public void setUserLevel(UserVO user) {
 		sqlSession.update(NAMESPACE+".setUserLevel", user);
 	}
+	
+	@Override
+	public int getTotalUser() {
+		return sqlSession.selectOne(NAMESPACE+".getTotalUser");
+	}
 }

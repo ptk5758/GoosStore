@@ -27,4 +27,7 @@
 	<update id="setUserLevel">
 		update user set userLevel=#{userLevel} where userUUID=#{userUUID}
 	</update>
+	<select id="getTotalUser" resultType="int">
+		select count(*) from user
+	</select>
 </mapper>

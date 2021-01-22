@@ -22,4 +22,5 @@ public interface UserDAO {
 	 * @param userLevel userUUID
 	 */
 	public void setUserLevel(UserVO user);
+	public int getTotalUser();
 }

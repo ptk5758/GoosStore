@@ -1,5 +1,7 @@
 package com.ptk.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -44,7 +46,7 @@ public class UserRestController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/userPasswordsearch", method = RequestMethod.POST, produces = "application/text; charset=UTF8")
+	@RequestMapping(value = "/userPasswordsearch", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String getUserPasswordJSON(@RequestBody UserVO user) {
 		String result;
 		try {
@@ -60,6 +62,38 @@ public class UserRestController {
 			result = "{\"msg\":\"아이디를 찾지못하였습니다.Not Fount user\"}";
 			return result;
 		}
+		return result;
+	}
+	
+	@RequestMapping(value = "", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String getUserList() {
+		String result;
+		List<UserVO> list = dao.getUserList();
+		int count = getTotalUser();
+		result = "{\"count\":\""+count+"\",\"list\":[";
+		for(int i=0; i<list.size(); i++) {
+			UserVO user = list.get(i);
+			result += "{\"userUUID\":\""+user.getUserUUID()+"\",";
+			result += "\"userName\":\""+user.getUserName()+"\",";
+			result += "\"userID\":\""+user.getUserID()+"\",";
+			result += "\"userNickName\":\""+user.getUserNickName()+"\",";
+			result += "\"userEmail\":\""+user.getUserEmail()+"\",";
+			result += "\"userLevel\":\""+user.getUserLevel()+"\",";
+			result += "\"userSignUpDate\":\""+user.getUserSignUpDate()+"\",";
+			result += "\"userPhone\":\""+user.getUserPhone()+"\"}";
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+		}
+		logger.info(result);
+		return result;
+	}
+	
+	private int getTotalUser() {
+		int result;
+		result = dao.getTotalUser();
 		return result;
 	}
 	

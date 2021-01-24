@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/* div 테이블 */
+div.blueTable 
+.divTable.blueTable .divTableCell, .divTable.blueTable{
+  border: 1px solid #AAAAAA;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableCell{ display: table-cell;}
+.divTableBody { display: table-row-group;}
+
+/* 기타 css */
+
+.titlestyle{
+	font-weight: bold;
+	font-size: 30px;
+}
+	.title{
+		font-size:20px;
+	}
+	.title a{
+		text-decoration: none;
+	}
+	div.blueTable {
+	  width: 1200px;
+	  text-align: left;
+	  border-collapse: collapse;
+	}
+	div.blueTable 
+	.divTable.blueTable .divTableCell, .divTable.blueTable{
+	  border: 1px solid #AAAAAA;
+	}
+	.divTable.blueTable .divTableBody .divTableCell {
+	  font-size: 13px;
+	}
+	.divTable{ display: table; }
+	.divTableRow {
+	 display: table-row; 
+	 border:1px solid black;
+	 }
+	.divTableCell{ display: table-cell;}
+	.divTableBody { display: table-row-group;}
+	
+	.textalign{
+		color:black;	
+		text-align: right;
+	}
+	
+
+

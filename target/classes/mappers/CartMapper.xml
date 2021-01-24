@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.CartMapper">
+	<insert id="addToCart">
+		insert into cart(user_id,item_uid,amount,itemName,itemBottomCategory,img_m,itemPrice) values(#{user_id},#{item_uid},#{amount},#{itemName},#{itemBottomCategory},#{img_m},#{itemPrice}*#{amount})
+	</insert>
+	<select id="getItemList" resultType="int">
+		select count(*) from cart where item_uid = #{uid}
+	</select>
+	<update id="updateAmount">
+		update cart set amount = amount + #{amount} where item_uid = #{item_uid}
+	</update>
+	<update id="incartupdateAmount">
+		update cart set amount = #{amount} where item_uid = #{uid}
+	</update>
+	<select id="cartamount" resultType="int">
+		 select sum(amount) from cart where user_id = #{sessionid}
+	</select>
+	<select id="cartlist" resultType="CartVO">
+		select * from cart where user_id = #{sessionid} 
+	</select>
+	<delete id="deletecart">
+		delete from cart where item_uid = #{uid}
+	</delete>
+	
+	
+</mapper>

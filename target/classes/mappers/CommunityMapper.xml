@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.CommunityMapper">
+	<insert id="CommunityPost">
+		insert into community(postImage,postUsername,postTitle,postContent) values(#{postImage},#{postUsername},#{postTitle},#{postContent})
+	</insert>
+	<select id="getCommunityList" resultType="CommunityVO">
+		select * from community
+	</select>
+	<select id="getpostdetail" resultType="CommunityVO">
+		select * from community where postUid=#{postUid} 
+	</select>
+</mapper>

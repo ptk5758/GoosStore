@@ -5,20 +5,36 @@
 	
 	submitbth.addEventListener("click", function(){
 		let userFile = document.getElementById('profile');
+		if(userFile.files.length <= 0){
+			alert("프로필 사진은 무조건 업로드해주셔야합니다.");
+			return;
+		}
 		let sellerName = document.getElementById('SellerName').value;
+		if(sellerName === "" || sellerName == null){
+			alert("셀러명을 입력하여주세요");
+			return;
+		}
 		let sellerID = document.getElementById('SellerID').value;
+		if(sellerID === "" || sellerID == null){
+			alert("셀러님의 아이디를 입력하여주세요");
+			return;
+		}
 		let sellerNumber = document.getElementById('SellerNumber').value;
+		if(sellerNumber === "" || sellerNumber == null){
+			alert("대표 전화번호를 입력하여주세요");
+			return;
+		}
 		let postcode = document.getElementById('sample6_postcode').value;
+		if(postcode === "" || postcode == null){
+			alert("우편 번호를 입력하여 주세요");
+			return;
+		}
 		let addr1 = document.getElementById('sample6_address').value;
+		if(addr1 === "" || addr1 == null){
+			alert("주소를 입력하여주세요");
+			return;
+		}
 		let addr2 = document.getElementById('sample6_detailAddress').value;
-		console.log("SubMit!");
-		console.log(sellerName);
-		console.log(sellerID);
-		console.log(postcode);
-		console.log(addr1);
-		console.log(addr2);
-		console.log(userFile.files);
-		console.log(sellerNumber);
 		let formData = new FormData();
 		formData.append("name",sellerName);
 		formData.append("sellerID",sellerID);
@@ -35,7 +51,12 @@
 		
 		xhp.onreadystatechange = () => {
 			if(xhp.readyState === 4 && xhp.status === 200){
-				console.log(xhp.responseText);
+				let jsonData = JSON.parse(xhp.responseText);
+				console.log(jsonData);
+				if(jsonData.msg === "성공"){
+					alert("셀러 등록에 성공하셨습니다.");
+					location.href="/";
+				}
 			}
 		}
 	});

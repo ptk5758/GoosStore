@@ -57,12 +57,28 @@ public class ShopController {
 		return "/shop/seller";
 	}
 	
+	/**
+	 * ##셀러 신청하는 메서드입니다. 
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/seller",method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
-	public String sellerInsert(SellerVO seller, @RequestParam("file")MultipartFile file) {
+	public String sellerInsert(SellerVO seller, @RequestParam("file")MultipartFile file, HttpSession session) throws IOException, Exception {
 		logger.info(seller.toString());
-		logger.info(file.getOriginalFilename());
-		return "성공";
+		if(session.getAttribute("sessionID") == null) {
+			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
+		} else {
+			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
+			//dao.insertSeller(seller);
+		}
+		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/seller", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String sellerGET() {
+		String result;
+		result = "{\"msg\":\"성공\"}";
+		return result;
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

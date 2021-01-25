@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <link rel="stylesheet" type="text/css" href="/css/shop.css?ver=1">
 	<div class="sellerborder">
-		<div class="sellerborder_top">셀러 신청</div>
+		<div class="sellerborder_top">셀러 등록</div>
 		<div class="sellerborder_input">
 			<div class="sellerborder_input_item">
 				<div class="input_item_num">
@@ -102,7 +102,8 @@
                     //document.getElementById("sample6_extraAddress").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    //document.getElementById("sample6_extraAddress").value = '';
+                    console.log("gdgd");
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.

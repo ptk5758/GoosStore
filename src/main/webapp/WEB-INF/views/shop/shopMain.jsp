@@ -70,6 +70,7 @@
 		<div class="BJ">7</div>
 		<div class="BJ">8</div>
 	</div>
+<script src="/js/shopSystem.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		
 

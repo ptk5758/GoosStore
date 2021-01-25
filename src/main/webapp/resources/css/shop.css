@@ -1,20 +1,5 @@
 @charset "UTF-8";
 
-@font-face{
-	font-family: "넥슨고딕";
-	src: url("/font/nexon/nexon_gothicotflight.woff");
-}
-@font-face{
-	font-family: "넥슨고딕";
-	src: url("/font/nexon/nexon_gothicotfbold.woff");
-	font-weight: bold;
-}
-/*----------------샵메인-----------------------------*/
-.slide{
-	background-image:url(/img/woo.jpg);
-	width:1200px;
-	height:500px;
-}
 .categories{
 	width:1200px;
 	height:300px;
@@ -25,7 +10,7 @@
 	height:180px;
 	float:left;
 	margin-left:100px;
-	
+	cursor: pointer;
 }
 .category img{
 	width:180px;
@@ -41,7 +26,26 @@
 .title a{
 	text-decoration: none;
 }
-/*----------------샵중분류 페이지-----------------------------*/
+
+/*------- 중분류샵-------*/
+.intro{
+	width:1000px;
+	height:150px;
+	margin:0 auto;
+	margin-top:50px;
+	background-color:white;
+}
+.intro img{
+	height:200px;
+	width:250px;
+}
+.imgposition{
+	height:200px;
+	width:250px;
+	position:absolute;
+	bottom:0px;
+	left:1000px;
+}
 .midcatContainer{
 	background-color: #fff;
 }
@@ -60,11 +64,8 @@
 .midcatBorder_Top{
 	display: flex;
 	justify-content: space-around;
-	padding: 13px;
-	cursor: pointer;
-}
-.midcatBorder_Top > div:hover {
-	color: #fff;
+	padding:13px;
+	cursor:pointer;
 }
 .midcatBorder_Content{
 	display: flex;
@@ -86,15 +87,12 @@
 	width: 90%;
 	min-height: 500px;
 }
-
-
-
-
-
-
-
-
-
+ul{
+	list-style-type: none;
+}
+.page{
+	
+}
 
 
 

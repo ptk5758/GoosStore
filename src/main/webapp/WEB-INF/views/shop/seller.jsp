@@ -10,7 +10,7 @@
 					<div class="circle">1</div>
 				</div>
 				<div class="input_item_text">셀러명</div>
-				<div class="input_item_input"><input></div>
+				<div class="input_item_input"><input id="SellerName" placeholder="SellerName"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">
@@ -18,7 +18,7 @@
 					<div class="circle">2</div>
 				</div>
 				<div class="input_item_text">아이디</div>
-				<div class="input_item_input"><input></div>
+				<div class="input_item_input"><input id="SellerID" placeholder="SellerID"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">
@@ -26,7 +26,7 @@
 					<div class="circle">3</div>
 				</div>				
 				<div class="input_item_text">대표전화</div>
-				<div class="input_item_input"><input></div>
+				<div class="input_item_input"><input id="SellerNumber" placeholder="SellerNumber"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">
@@ -50,7 +50,7 @@
 					<div class="circle">6</div>
 				</div>
 				<div class="input_item_text">프로필 사진</div>
-				<div class="input_item_input"><input type="file"></div>
+				<div class="input_item_input"><input type="file" id="profile"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">
@@ -99,7 +99,7 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    //document.getElementById("sample6_extraAddress").value = extraAddr;
                 
                 } else {
                     document.getElementById("sample6_extraAddress").value = '';

@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
 import com.ptk.persistence.ShopDAO;
 
@@ -53,6 +55,14 @@ public class ShopController {
 		}
 		
 		return "/shop/seller";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/seller",method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public String sellerInsert(SellerVO seller, @RequestParam("file")MultipartFile file) {
+		logger.info(seller.toString());
+		logger.info(file.getOriginalFilename());
+		return "성공";
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

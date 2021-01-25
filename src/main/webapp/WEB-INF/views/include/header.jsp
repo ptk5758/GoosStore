@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="top">
-			<div class="top_Title" onclick="location.href='/'">업적보라</div>
+			<div class="top_Title" onclick="location.href='/'">QWER</div>
 			<div class="top_Signup">
 				<c:if test="${sessionID == null }">
 					<div class="top_Signup_Item" onclick="location.href='/user/login'">로그인</div>
@@ -25,6 +25,16 @@
 					<div class="top_Signup_Item" onclick="location.href='/user/mypage?sessionID=${sessionID}'">마이페이지</div>
 				</c:if>
 			</div>
+			
+		</div>
+		<div class="top_Menu">
+			<div class="top_Menu_item">굿즈샵</div>
+			<div class="top_Menu_item">커뮤니티</div>
+			<div class="top_Menu_item">1</div>
+			<div class="top_Menu_item">1</div>
+			<div class="top_Menu_item">1</div>
+			<div class="top_Menu_item">1</div>
+			<div class="top_Menu_item">1</div>
 		</div>
 		<c:if test="${sessionID == null }">
 			<script>
@@ -32,4 +42,5 @@
 			</script>
 		</c:if>
 
+		
 		

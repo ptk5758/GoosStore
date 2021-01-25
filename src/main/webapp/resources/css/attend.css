@@ -14,7 +14,9 @@
 	background-color: #4d4d4d;
 	min-height: 800px;
 	border-radius: 15px 15px 0px 0px;
-	background: linear-gradient(to right, #4d4d4d, #818181);
+	/*background: linear-gradient(to right, #69fcde, #818181); */
+	background-color: #cefdf4;
+	border: 3px solid#98fcfa;
 	font-family: "넥슨고딕";
 }
 
@@ -30,7 +32,7 @@
 .attendTitle_Text{
 	font-size: 24px;
 	font-weight: bold;
-	color: #fff;
+	color: #434343;
 	align-self: center;
 }
 .selectDate{

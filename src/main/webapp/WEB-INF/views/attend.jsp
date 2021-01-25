@@ -23,7 +23,7 @@
 				</c:if>
 				<!-- action="/restAttend/attendInsert" method="post"  -->
 				<div class="attendInputForm">					
-					<div class="attendInput"><input id="content" name="content" placeholder="출석체크를 하고 경험치를 올리세요"></div>
+					<div class="attendInput"><input id="content" name="content" placeholder="남길 한마디"></div>
 					<div class="attendButton"><input type="button" value="출석체크" onclick="attendInsert('${sessionID}','${sessionNickName}')"></div>
 				</div>
 			</div>

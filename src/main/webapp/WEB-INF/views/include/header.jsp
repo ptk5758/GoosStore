@@ -29,11 +29,11 @@
 		</div>
 		<div class="top_Menu">
 			<div class="top_Menu_item">굿즈샵</div>
-			<div class="top_Menu_item">커뮤니티</div>
+			<div class="top_Menu_item" onclick="location.href='/community/community'">커뮤니티</div>
 			<div class="top_Menu_item">1</div>
 			<div class="top_Menu_item">1</div>
 			<div class="top_Menu_item">1</div>
-			<div class="top_Menu_item">1</div>
+			<div class="top_Menu_item" onclick="location.href='/attend/'">출석체크</div>
 			<div class="top_Menu_item">1</div>
 		</div>
 		<c:if test="${sessionID == null }">

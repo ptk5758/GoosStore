@@ -10,7 +10,7 @@
 }
 /*------------------------------질문답변-----------------------------*/
 .ask{
-	background-color: #818181;
+	background-color: #c6fdb3;
 	width: 88%;
 	margin: 0 auto;
 	display: flex;
@@ -24,18 +24,18 @@
 .askBorder{
 	display: flex;
 	width: 100%;
-	border-top: 3px solid#000000;
+	border-top: 3px solid#5cf928;
 }
 .askBorderLeft{
 	width: 35%;
-	border-right: 2px dashed#000000;
-	border-left: 2px dashed#000000;
+	border-right: 2px dashed#5cf928;
+	border-left: 2px dashed#5cf928;
 	background-color: #fff;
 }
 .borderTop{
 	text-align: center;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 22px;
 	font-family: "넥슨고딕";
 	padding: 1.2em;
 }

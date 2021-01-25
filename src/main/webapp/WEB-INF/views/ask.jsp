@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <link rel="stylesheet" type="text/css" href="/css/ask.css?ver=1">
 	<div class="ask">
-		<div><h1 style="color: #fff;">질문답변</h1></div>
+		<div><h2 style="color: #fff;">질문답변</h2></div>
 		<div class="askBorder">
 			<div class="askBorderLeft">
 				<div class="borderTop">자주하는질문</div>

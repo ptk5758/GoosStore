@@ -7,7 +7,15 @@
 	console.log("gdgd");
 	
 	let viewimg = (event) => {
+		console.log(event.target.files[0].type);
+		let type = event.target.files[0].type.split("/");
 		
+		if(type[0] === "image"){
+			console.log("옳은 타입");
+		} else {
+			alert("잘못된 파일형식입니다.");
+			return;
+		}
 		let reader = new FileReader();
 		reader.onload = function(e) {
 			$(function(){

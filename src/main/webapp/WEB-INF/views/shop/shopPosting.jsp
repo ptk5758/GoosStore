@@ -10,7 +10,7 @@
 					<img id="itemimg" src="/img/kain.png">
 				</div>
 				<div class="posting_item_text">
-					<input type="file" id="itemimg" onchange="viewimg(event)">
+					<input type="file" id="itemimg" onchange="viewimg(event)" accept="image/*">
 				</div>
 			</div>
 			<div class="posting_border_right">오른쪽</div>

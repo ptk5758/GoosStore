@@ -4,6 +4,7 @@
 	let submitbth = document.getElementById('sellerSubmit');
 	
 	submitbth.addEventListener("click", function(){
+		
 		let userFile = document.getElementById('profile');
 		if(userFile.files.length <= 0){
 			alert("프로필 사진은 무조건 업로드해주셔야합니다.");
@@ -43,10 +44,11 @@
 		formData.append("addr1",addr1);
 		formData.append("addr2",addr2);
 		for(let file of userFile.files){
-			formData.append("file",file);
+			formData.append("files", file);
+			console.log(file);
 		}
 		let xhp = new XMLHttpRequest();
-		xhp.open("POST","seller",true);
+		xhp.open("POST","/shop/sellermodify",true);
 		xhp.send(formData);
 		
 		xhp.onreadystatechange = () => {

@@ -34,7 +34,13 @@
 			<div class="top_Menu_item">1</div>
 			<div class="top_Menu_item" onclick="location.href='/ask/'">질문답변</div>
 			<div class="top_Menu_item" onclick="location.href='/attend/'">출석체크</div>
-			<div class="top_Menu_item" onclick="location.href='/shop/seller'">셀러등록</div>
+			<c:if test="${sessionSeller}">
+				<div class="top_Menu_item" onclick="location.href='/shop/sellerModify'">셀러수정</div>
+			</c:if>
+			<c:if test="${!sessionSeller}">
+				<div class="top_Menu_item" onclick="location.href='/shop/seller'">셀러등록</div>
+			</c:if>
+			
 		</div>
 		<c:if test="${sessionID == null }">
 			<script>

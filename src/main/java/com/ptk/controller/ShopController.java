@@ -63,6 +63,20 @@ public class ShopController {
 		return "/shop/seller";
 	}
 	
+	@RequestMapping(value = "/sellerModify", method = RequestMethod.GET)
+	public String sellerModifyPage(HttpSession session, RedirectAttributes rttr, Model model) {
+		if(session.getAttribute("sessionID") == null) {
+			rttr.addFlashAttribute("msg", "로그인 후 이용하실수 있습니다.");
+			return "redirect:/";
+		}
+		
+		String sessionID = (String)session.getAttribute("sessionID");
+		SellerVO user = dao.getSellerVO(sessionID);
+		logger.info(user.toString());
+		model.addAttribute("user", user);
+		return "/shop/sellerModify";
+	}
+	
 	/**
 	 * ##셀러 신청하는 메서드입니다. 
 	 */
@@ -75,6 +89,21 @@ public class ShopController {
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
 			dao.insertSeller(seller);
+		}
+		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/sellermodify",method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public String sellerModify(SellerVO seller, @RequestParam("files")MultipartFile file, HttpSession session) throws IOException, Exception {
+		logger.info(seller.toString());
+		if(session.getAttribute("sessionID") == null) {
+			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
+		} else {
+			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
+			logger.info(seller.toString());
+			//dao.insertSeller(seller);
+			dao.modifySeller(seller);
 		}
 		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
 	}

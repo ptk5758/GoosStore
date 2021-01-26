@@ -33,13 +33,14 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPOST(UserVO user, HttpSession session, HttpServletRequest request) {
 		logger.info("로그인 시도");
-		logger.info(user.toString());
 		try {
 			user = dao.login(user);
+			logger.info(user.toString());
 			session.setAttribute("sessionLevel", user.getUserLevel());
 			session.setAttribute("sessionID", user.getUserID());
 			session.setAttribute("sessionName", user.getUserName());
 			session.setAttribute("sessionNickName", user.getUserNickName());
+			session.setAttribute("sessionSeller", user.isSeller());
 			return "redirect: /";
 		} catch (Exception e) {
 			logger.info("로그인에 실패하였습니다.");

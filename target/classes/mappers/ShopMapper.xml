@@ -15,4 +15,10 @@
 	<select id="getSellerOne" resultType="UserVO">
 		select * from user where userID = #{sessionID}
 	</select>
+	<select id="getSellerVO" resultType="SellerVO">
+		select * from seller where sellerID = #{sessionID}
+	</select>
+	<update id="modifySeller">
+		update seller set name=#{name}, phone=#{phone}, postcod=#{postcod}, addr1=#{addr1}, addr2=#{addr2}, img=#{img} where sellerID =#{sellerID}
+	</update>
 </mapper>

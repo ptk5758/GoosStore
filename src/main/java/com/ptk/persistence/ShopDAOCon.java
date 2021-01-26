@@ -32,5 +32,16 @@ public class ShopDAOCon implements ShopDAO{
 	public UserVO getSellerOne(String sessionID) {
 		return sqlSession.selectOne(NAMESPACE+".getSellerOne", sessionID);
 	}
+	
+	@Override
+	public SellerVO getSellerVO(String sessionID) {
+		return sqlSession.selectOne(NAMESPACE+".getSellerVO", sessionID);
+	}
+	
+	@Override
+	public void modifySeller(SellerVO seller) {
+		sqlSession.update(NAMESPACE+".modifySeller", seller);
+		
+	}
 
 }

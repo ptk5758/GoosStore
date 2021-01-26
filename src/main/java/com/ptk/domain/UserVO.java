@@ -13,8 +13,15 @@ public class UserVO {
 	private String userEmail;
 	private int userLevel;
 	private int userExp;
+	private boolean seller;
 	
-
+	
+	public boolean isSeller() {
+		return seller;
+	}
+	public void setSeller(boolean seller) {
+		this.seller = seller;
+	}
 	public int getUserExp() {
 		return userExp;
 	}
@@ -94,7 +101,8 @@ public class UserVO {
 				+userPhone+" = 전화번호, "
 				+userEmail+" = 유저이메일주소,"
 				+userExp+" = 유저포인트,"
-				+userLevel+" = 유저레벨";
+				+userLevel+" = 유저레벨,"
+				+seller+ " = 셀러";
 	}
 }
 

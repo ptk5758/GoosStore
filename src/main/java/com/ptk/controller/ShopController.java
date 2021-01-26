@@ -83,7 +83,6 @@ public class ShopController {
 	@ResponseBody
 	@RequestMapping(value = "/seller",method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
 	public String sellerInsert(SellerVO seller, @RequestParam("file")MultipartFile file, HttpSession session) throws IOException, Exception {
-		logger.info(seller.toString());
 		if(session.getAttribute("sessionID") == null) {
 			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
 		} else {
@@ -101,7 +100,6 @@ public class ShopController {
 			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
-			logger.info(seller.toString());
 			//dao.insertSeller(seller);
 			dao.modifySeller(seller);
 		}
@@ -122,6 +120,7 @@ public class ShopController {
 			result += "\"postcod\":\""+vo.getPostcod()+"\",";
 			result += "\"address1\":\""+vo.getAddr1()+"\",";
 			result += "\"address2\":\""+vo.getAddr2()+"\",";
+			result += "\"comment\":\""+vo.getComment()+"\",";
 			result += "\"phone\":\""+vo.getPhone()+"\"}";
 			if(i+1 == list.size()) {
 				result += "]}";

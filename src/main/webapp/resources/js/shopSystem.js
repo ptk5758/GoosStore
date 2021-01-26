@@ -19,6 +19,7 @@
 								<img src="${list.img}">
 							</div>
 							<div class="BJ_Text">
+								<div>${list.comment}</div>
 							</div>
 						</div>
 					`;

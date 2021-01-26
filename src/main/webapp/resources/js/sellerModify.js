@@ -36,6 +36,7 @@
 			return;
 		}
 		let addr2 = document.getElementById('sample6_detailAddress').value;
+		let comment = document.getElementById('comment').value;
 		let formData = new FormData();
 		formData.append("name",sellerName);
 		formData.append("sellerID",sellerID);
@@ -43,6 +44,7 @@
 		formData.append("postcod",postcode);
 		formData.append("addr1",addr1);
 		formData.append("addr2",addr2);
+		formData.append("comment", comment);
 		for(let file of userFile.files){
 			formData.append("files", file);
 			console.log(file);

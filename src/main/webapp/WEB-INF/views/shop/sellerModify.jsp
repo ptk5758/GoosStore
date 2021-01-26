@@ -49,13 +49,21 @@
 				<div class="input_item_num">
 					<div class="circle">6</div>
 				</div>
+				<div class="input_item_text">한줄코맨트</div>
+				<div class="input_item_input"><input type="text" id="comment"></div>
+				<div class="input_item_option"></div>
+			</div>
+			<div class="sellerborder_input_item">
+				<div class="input_item_num">
+					<div class="circle">7</div>
+				</div>
 				<div class="input_item_text">프로필 사진</div>
 				<div class="input_item_input"><input type="file" id="profile"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">
 				<div class="input_item_num">
-					<div class="circle">7</div>
+					<div class="circle">8</div>
 				</div>
 				<div class="input_item_text"></div>
 				<div class="input_item_input"><button id="sellerSubmit">수정하기</button></div>

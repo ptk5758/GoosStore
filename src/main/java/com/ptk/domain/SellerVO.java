@@ -8,6 +8,7 @@ public class SellerVO {
 	private String addr1;
 	private String addr2;
 	private String img;
+	private String comment;
 	
 	@Override
 	public String toString() {
@@ -19,6 +20,7 @@ public class SellerVO {
 		result += "{\"postcod\":\""+this.postcod+"\"},";
 		result += "{\"addr1\":\""+this.addr1+"\"},";
 		result += "{\"addr2\":\""+this.addr2+"\"},";
+		result += "{\"comment\":\""+this.comment+"\"},";
 		result += "{\"img\":\""+this.img+"\"}";
 		return result;
 	}
@@ -64,6 +66,14 @@ public class SellerVO {
 	}
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 	

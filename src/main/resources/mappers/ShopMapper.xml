@@ -12,4 +12,7 @@
 	<select id="getSeller" resultType="SellerVO">
 		select * from seller
 	</select>
+	<select id="getSellerOne" resultType="UserVO">
+		select * from user where userID = #{sessionID}
+	</select>
 </mapper>

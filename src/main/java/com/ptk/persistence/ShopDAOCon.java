@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
+import com.ptk.domain.UserVO;
 
 @Repository
 public class ShopDAOCon implements ShopDAO{
@@ -26,6 +27,10 @@ public class ShopDAOCon implements ShopDAO{
 	@Override
 	public List<SellerVO> getSeller() {
 		return sqlSession.selectList(NAMESPACE+".getSeller");
+	}
+	@Override
+	public UserVO getSellerOne(String sessionID) {
+		return sqlSession.selectOne(NAMESPACE+".getSellerOne", sessionID);
 	}
 
 }

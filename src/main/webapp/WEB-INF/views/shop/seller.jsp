@@ -18,7 +18,7 @@
 					<div class="circle">2</div>
 				</div>
 				<div class="input_item_text">아이디</div>
-				<div class="input_item_input"><input id="SellerID" placeholder="SellerID"></div>
+				<div class="input_item_input"><input id="SellerID" placeholder="SellerID" value="${user.userID}" readonly="readonly"></div>
 				<div class="input_item_option"></div>
 			</div>
 			<div class="sellerborder_input_item">

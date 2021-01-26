@@ -2,6 +2,7 @@ package com.ptk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
+import com.ptk.domain.UserVO;
 import com.ptk.persistence.ShopDAO;
 
 @Controller
@@ -47,13 +49,17 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = "/seller", method = RequestMethod.GET)
-	public String sellerGET(HttpSession session, RedirectAttributes rttr) {
+	public String sellerGET(HttpSession session, RedirectAttributes rttr, Model model) {
 		
 		if(session.getAttribute("sessionID") == null) {
 			rttr.addFlashAttribute("msg", "로그인 후 이용하실수 있습니다.");
 			return "redirect:/";
 		}
 		
+		String sessionID = (String)session.getAttribute("sessionID");
+		UserVO user = dao.getSellerOne(sessionID);
+		logger.info(user.toString());
+		model.addAttribute("user", user);
 		return "/shop/seller";
 	}
 	
@@ -68,16 +74,34 @@ public class ShopController {
 			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
-			//dao.insertSeller(seller);
+			dao.insertSeller(seller);
 		}
 		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/seller", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	@RequestMapping(value = "/Seller", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
 	public String sellerGET() {
 		String result;
-		result = "{\"msg\":\"성공\"}";
+		result = "{\"count\":\"1\",\"list\":[";
+		List<SellerVO> list = dao.getSeller();
+		for(int i=0; i<list.size(); i++) {
+			SellerVO vo = list.get(i);
+			result += "{\"name\":\""+vo.getName()+"\",";
+			result += "\"ID\":\""+vo.getSellerID()+"\",";
+			result += "\"img\":\"http://localhost:8080/6/"+vo.getImg()+"\",";
+			result += "\"postcod\":\""+vo.getPostcod()+"\",";
+			result += "\"address1\":\""+vo.getAddr1()+"\",";
+			result += "\"address2\":\""+vo.getAddr2()+"\",";
+			result += "\"phone\":\""+vo.getPhone()+"\"}";
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+			
+		}
+		logger.info(result);
 		return result;
 	}
 	

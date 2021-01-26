@@ -132,7 +132,6 @@
 				type : "get",
 				dataType : "json",
 				success : function(data){
-					console.log(data);
 					let result = "";
 					result += `
 					<div class="askView">
@@ -179,14 +178,12 @@
 		});
 	}
 	let getAdminFeed = function(uid){
-		console.log(uid);
 		let xhp = new XMLHttpRequest;
 		xhp.open("GET", `/AdminFeed/${uid}`, true);
 		xhp.send(null);
 		xhp.onreadystatechange = () => {
 			if(xhp.readyState === 4 && xhp.status === 200){
 				let data = xhp.responseText;
-				console.log(data);
 				let result = "";
 				let jsonData = JSON.parse(data);
 				for(let i=0; i<jsonData.list.length; i++){
@@ -203,7 +200,6 @@
 						</div>
 					`;
 				}
-				console.log(result);
 				document.getElementById('adminFeed').innerHTML = result;
 			}
 		}

@@ -1,10 +1,24 @@
 /**
  *  #절대까먹지말자 
  *  파일 미리보기 얘시
+ *	pr event Default 프리 이벤트 디폴트
+ *	####this, event 차이 명확함 까먹지말것
  */
-
+	console.log("gdgd");
 	
-	$(document).ready(function(){
+	let viewimg = (event) => {
+		
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			$(function(){
+				let result = `<img src="${e.target.result}">`;
+				$('.posting_item_img').html(result);
+			})			
+		};
+		reader.readAsDataURL(event.target.files[0]);
+	}
+	
+	/*$(document).ready(function(){
 		$('.posting').on("dragover",(event)=>{
 			event.preventDefault();
 			console.log("drag hello");
@@ -14,16 +28,17 @@
 			let files = event.originalEvent.dataTransfer.files;
 			console.log(files);
 			let reader = new FileReader();
+			reader.readAsDataURL(files[0]);
 			reader.onload = function(e){
 				console.log(e);
 				let result = `<img src="${e.target.result}">`;
-				$('#image_container').html(result);
+				$('.posting').html(result);
 			}
-			reader.readAsDataURL(files[0]);
+			
 		});
-	})
+	})*/
 	
-	function setThumbnail(event) { 
+	/*function setThumbnail(event) { 
 		var reader = new FileReader();
 		
 		reader.onload = function(e) {
@@ -33,5 +48,5 @@
 			document.querySelector("div#image_container").appendChild(img);			
 		};
 		reader.readAsDataURL(event.target.files[0]);
-	}
+	}*/
 	

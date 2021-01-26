@@ -14,7 +14,7 @@
 				let result = "";
 				for(let list of lists){
 					result += `
-						<div class="BJ" data-sellerID="${list.ID}" data-name="${list.name}">
+						<div class="BJ" data-id="${list.ID}" data-name="${list.name}" onclick="viewItem(this)">
 							<div class="BJ_IMG">
 								<img src="${list.img}">
 							</div>
@@ -29,3 +29,11 @@
 		}
 	}
 	getSeller();
+	
+	let viewItem = (item) => {
+		$(function(){
+			let sellerID = $(item).data('id');
+			console.log(sellerID);
+			location.href="/shop/"+sellerID;
+		});
+	}

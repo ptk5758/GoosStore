@@ -30,4 +30,7 @@
 	<select id="getTotalUser" resultType="int">
 		select count(*) from user
 	</select>
+	<update id="updateSeller">
+		update user set seller = 1 where userID=#{sellerID}
+	</update>
 </mapper>

@@ -31,7 +31,12 @@
 			<div class="top_Menu_item" onclick="location.href='/shop/main'">굿즈샵</div>
 			<div class="top_Menu_item" onclick="location.href='/community/community'">커뮤니티</div>
 			<div class="top_Menu_item">1</div>
-			<div class="top_Menu_item">1</div>
+			<c:if test="${sessionSeller}">
+				<div class="top_Menu_item" onclick="location.href='/shop/shopPosting'">상품등록</div>
+			</c:if>
+			<c:if test="${!sessionSeller}">
+				<div class="top_Menu_item" onclick="/">QWER</div>
+			</c:if>
 			<div class="top_Menu_item" onclick="location.href='/ask/'">질문답변</div>
 			<div class="top_Menu_item" onclick="location.href='/attend/'">출석체크</div>
 			<c:if test="${sessionSeller}">

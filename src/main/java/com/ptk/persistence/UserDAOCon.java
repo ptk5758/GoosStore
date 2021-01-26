@@ -67,4 +67,10 @@ public class UserDAOCon implements UserDAO{
 	public int getTotalUser() {
 		return sqlSession.selectOne(NAMESPACE+".getTotalUser");
 	}
+	
+	@Override
+	public void updateSeller(String sellerID) {
+		sqlSession.update(NAMESPACE+".updateSeller", sellerID);
+		
+	}
 }

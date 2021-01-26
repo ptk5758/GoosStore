@@ -23,4 +23,5 @@ public interface UserDAO {
 	 */
 	public void setUserLevel(UserVO user);
 	public int getTotalUser();
+	public void updateSeller(String sellerID);
 }

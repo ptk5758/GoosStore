@@ -123,5 +123,10 @@
 	background-color: #fff;
 	border: 2px solid#000000;
 }
-
+/* ------------------포스팅----------------------- */
+.posting{
+	width: 800px;
+	height: 800px;
+	border: 1px solid#000000;
+}
 

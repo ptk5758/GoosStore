@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,7 @@ import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
 import com.ptk.domain.UserVO;
 import com.ptk.persistence.ShopDAO;
+import com.ptk.persistence.UserDAO;
 
 @Controller
 @RequestMapping("/shop/")
@@ -37,6 +39,7 @@ public class ShopController {
 	
 	@Inject
 	private ShopDAO dao;
+	private UserDAO userdao;
 	
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -46,6 +49,17 @@ public class ShopController {
 		logger.info("메인 샵 페이지");
 		return "/shop/shopMain";
 		
+	}
+	
+	@RequestMapping(value = "/{sellerID}", method = RequestMethod.GET)
+	public String shopSellerMainPage(@PathVariable("sellerID") String sellerID) {
+		logger.info(sellerID);
+		return "/shop/shopSeller";
+	}
+	
+	@RequestMapping(value = "/shopPosting", method = RequestMethod.GET)
+	public String shopPostingPage() {
+		return "/shop/shopPosting";
 	}
 	
 	@RequestMapping(value = "/seller", method = RequestMethod.GET)
@@ -88,6 +102,7 @@ public class ShopController {
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
 			dao.insertSeller(seller);
+			userdao.updateSeller(seller.getSellerID());
 		}
 		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
 	}
@@ -100,7 +115,6 @@ public class ShopController {
 			return "{\"msg\":\"로그인후 이용하실수있습니다.\"}";
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
-			//dao.insertSeller(seller);
 			dao.modifySeller(seller);
 		}
 		return "{\"msg\":\"성공\",\"dir\":\"/\"}";

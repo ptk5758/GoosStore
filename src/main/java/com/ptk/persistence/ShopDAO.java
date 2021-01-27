@@ -1,6 +1,7 @@
 package com.ptk.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
@@ -17,4 +18,5 @@ public interface ShopDAO {
 	public List<String> getCategory();
 	public void addCategory(String category);
 	public List<ShopVO> getSellerItemList(String sellerID);
+	public ShopVO getViewItemVO(Map<String, Object> map);
 }

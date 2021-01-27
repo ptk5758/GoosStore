@@ -2,7 +2,9 @@ package com.ptk.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -65,6 +67,16 @@ public class ShopController {
 		
 		
 		return "/shop/shopSeller";
+	}
+	@RequestMapping(value = "/{sellerID}/{itemUID}", method = RequestMethod.GET)
+	public String viewItemPage(@PathVariable("sellerID")String sellerID,@PathVariable("itemUID") Integer itemUID, Model model) {
+		logger.info(sellerID+"||"+itemUID);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sellerID", sellerID);
+		map.put("itemUID", itemUID);
+		ShopVO shop = dao.getViewItemVO(map);
+		model.addAttribute("item", shop);
+		return "/shop/viewItem";
 	}
 	
 	@RequestMapping(value = "/shopPosting", method = RequestMethod.GET)

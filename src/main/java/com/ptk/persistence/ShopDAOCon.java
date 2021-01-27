@@ -1,6 +1,7 @@
 package com.ptk.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -60,6 +61,10 @@ public class ShopDAOCon implements ShopDAO{
 	@Override
 	public List<ShopVO> getSellerItemList(String sellerID) {
 		return sqlSession.selectList(NAMESPACE+".getSellerItem", sellerID);
+	}
+	@Override
+	public ShopVO getViewItemVO(Map<String, Object> map) {
+		return sqlSession.selectOne(NAMESPACE+".getViewItem", map);
 	}
 
 }

@@ -46,5 +46,15 @@ public class ShopDAOCon implements ShopDAO{
 	public void itemInsert(ShopVO shop) {
 		sqlSession.insert(NAMESPACE+".itemInsert", shop);
 	}
+	@Override
+	public List<String> getCategory() {
+		return sqlSession.selectList(NAMESPACE+".getCategory");
+	}
+	
+	@Override
+	public void addCategory(String category) {
+		sqlSession.insert(NAMESPACE+".addCategory", category);
+		
+	}
 
 }

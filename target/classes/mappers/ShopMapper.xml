@@ -21,4 +21,10 @@
 	<update id="modifySeller">
 		update seller set name=#{name}, phone=#{phone}, postcod=#{postcod}, addr1=#{addr1}, addr2=#{addr2}, img=#{img}, comment=#{comment} where sellerID =#{sellerID}
 	</update>
+	<select id="getCategory" resultType="String">
+		select category from category group by category
+	</select>
+	<insert id="addCategory">
+		insert into category (category) values (#{category});
+	</insert>
 </mapper>

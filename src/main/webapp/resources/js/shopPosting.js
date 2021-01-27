@@ -56,6 +56,25 @@
 		xhp.open("POST","/shop/posting",true);
 		xhp.send(formData);
 		
+		xhp.onreadystatechange = () => {
+			if(xhp.readyState === 4 && xhp.status === 200){
+				let jsonData = JSON.parse(xhp.responseText);
+				if(jsonData.msg === "성공"){
+					alert("상품등록에 성공하였습니다.");
+					document.getElementById('submitButton').innerHTML = `<button>등록성공</button>`;
+				}
+			}
+		}
+		
+	}
+	
+	let selectCategory = (item) =>{
+		console.log(item.value);
+		console.log(item.parentNode);
+		if(item.value === "write"){
+			let parentElement = item.parentNode;
+			parentElement.innerHTML = `<input name="itemMidCategory">`
+		}
 		
 	}
 	

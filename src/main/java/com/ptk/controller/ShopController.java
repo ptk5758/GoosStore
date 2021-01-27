@@ -59,6 +59,7 @@ public class ShopController {
 	
 	@RequestMapping(value = "/shopPosting", method = RequestMethod.GET)
 	public String shopPostingPage(Model model, HttpSession session) {
+		model.addAttribute("category", dao.getCategory());
 		model.addAttribute("user", dao.getSellerOne((String)session.getAttribute("sessionID")));
 		return "/shop/shopPosting";
 	}
@@ -159,9 +160,10 @@ public class ShopController {
 			if(i==2) {shop.setImg_3(uploadFile(file.getOriginalFilename(), file.getBytes()));}
 			i++;
 		}
+		dao.addCategory(shop.getItemMidCategory());
 		dao.itemInsert(shop);
 		logger.info(shop.toString());
-		return  "성공";
+		return  "{\"msg\":\"성공\"}";
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

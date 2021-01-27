@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.ptk.domain.SellerVO;
 import com.ptk.domain.UserVO;
 
 @Repository
@@ -69,8 +70,8 @@ public class UserDAOCon implements UserDAO{
 	}
 	
 	@Override
-	public void updateSeller(String sellerID) {
-		sqlSession.update(NAMESPACE+".updateSeller", sellerID);
+	public void updateSeller(SellerVO seller) {
+		sqlSession.update(NAMESPACE+".updateSeller", seller);
 		
 	}
 }

@@ -2,6 +2,7 @@ package com.ptk.persistence;
 
 import java.util.List;
 
+import com.ptk.domain.SellerVO;
 import com.ptk.domain.UserVO;
 
 public interface UserDAO {
@@ -23,5 +24,5 @@ public interface UserDAO {
 	 */
 	public void setUserLevel(UserVO user);
 	public int getTotalUser();
-	public void updateSeller(String sellerID);
+	public void updateSeller(SellerVO seller);
 }

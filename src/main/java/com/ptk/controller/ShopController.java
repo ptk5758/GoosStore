@@ -41,6 +41,7 @@ public class ShopController {
 	
 	@Inject
 	private ShopDAO dao;
+	@Inject
 	private UserDAO userdao;
 	
 	@Resource(name = "uploadPath")
@@ -126,8 +127,10 @@ public class ShopController {
 		} else {
 			seller.setImg(uploadFile(file.getOriginalFilename(), file.getBytes()));
 			dao.insertSeller(seller);
-			userdao.updateSeller(seller.getSellerID());
+			logger.info(seller.getSellerID()+"<><<<<<");
+			
 		}
+		userdao.updateSeller(seller);
 		return "{\"msg\":\"성공\",\"dir\":\"/\"}";
 	}
 	

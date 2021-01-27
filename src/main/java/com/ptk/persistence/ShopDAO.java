@@ -16,4 +16,5 @@ public interface ShopDAO {
 	public void itemInsert(ShopVO shop);
 	public List<String> getCategory();
 	public void addCategory(String category);
+	public List<ShopVO> getSellerItemList(String sellerID);
 }

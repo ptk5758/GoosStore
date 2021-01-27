@@ -27,4 +27,7 @@
 	<insert id="addCategory">
 		insert into category (category) values (#{category});
 	</insert>
+	<select id="getSellerItem" resultType="ShopVO">
+		select * from shop where userID = #{sellerID}
+	</select>
 </mapper>

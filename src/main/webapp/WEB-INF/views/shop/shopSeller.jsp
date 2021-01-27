@@ -2,7 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <link rel="stylesheet" type="text/css" href="/css/shop.css">
-	<h1>gdgdsfds</h1>
+	<div class="seller_Main">
+		<div class="seller_Title">
+			<div class="seller_Title_Img"><img src="/6/${seller.img }"></div>
+			<div class="seller_Title_text">${seller.comment }</div>
+		</div>
+		<c:if test="${list != null}">
+		<div class="seller_ItemBorder">
+			<c:forEach var="item" items="${list }">
+			<div class="seller_ItemBorder_Item">
+				<div class="seller_ItemBorder_Item_img"><img src="/6/${item.img_m }"></div>
+				<div class="seller_ItemBorder_Item_Name">${item.itemName }</div>
+				<div class="seller_ItemBorder_Item_Price">${item.itemPrice }</div>
+			</div>
+			</c:forEach>
+		</div>
+		</c:if>
+		<c:if test="${list == null}">
+			<h1 style="background-color: #fff; width: 95%; padding: 15px; text-align: center;">입고 준비중입니다.</h1>
+		</c:if>
+	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		
 

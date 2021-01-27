@@ -52,8 +52,18 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = "/{sellerID}", method = RequestMethod.GET)
-	public String shopSellerMainPage(@PathVariable("sellerID") String sellerID) {
+	public String shopSellerMainPage(@PathVariable("sellerID") String sellerID, Model model) {
 		logger.info(sellerID);
+		
+		List<ShopVO> list = dao.getSellerItemList(sellerID);
+		if(list.isEmpty()) {
+			model.addAttribute("list", null);
+		} else {
+			model.addAttribute("list", list);
+		}
+		model.addAttribute("seller", dao.getSellerVO(sellerID));
+		
+		
 		return "/shop/shopSeller";
 	}
 	

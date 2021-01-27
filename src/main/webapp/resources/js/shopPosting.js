@@ -21,7 +21,7 @@
 			$(function(){
 				let result = `<img src="${e.target.result}">`;
 				$('.posting_item_img').html(result);
-			})			
+			})
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	}

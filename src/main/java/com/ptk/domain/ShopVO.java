@@ -12,14 +12,54 @@ public class ShopVO {
 	private String itemPrice;
 	private int itemRef;
 	private int itemCount;
+	private String itemContent;
 	private String img_s;
 	private String img_m;
 	private String img_1;
 	private String img_2;
 	private String img_3;
 	private String User;
+	private String UserID;
 	private Date signdate;
 	
+
+
+
+	@Override
+	public String toString() {
+		String result;
+		result = "{";
+		result += "\"itemUID\":\""+this.itemUID+"\",";
+		result += "\"itemName\":\""+this.itemName+"\",";
+		result += "\"UserID\":\""+this.UserID+"\",";
+		result += "\"itemMidCategory\":\""+this.itemMidCategory+"\",";
+		result += "\"itemPrice\":\""+this.itemPrice+"\",";
+		result += "\"user\":\""+this.User+"\",";
+		result += "\"signdate\":\""+this.signdate+"\",";
+		result += "\"itemContent\":\""+this.itemContent+"\",";		
+		result += "\"itemRef\":\""+this.itemRef+"\",";
+		result += "\"itemCount\":\""+this.itemCount+"\",";
+		result += "\"img_m\":\""+this.img_m+"\",";
+		result += "\"img_1\":\""+this.img_1+"\",";
+		result += "\"img_2\":\""+this.img_2+"\",";
+		result += "\"img_3\":\""+this.img_3+"\"";
+		result += "}";
+		return result;
+	} 
+	
+	public String getUserID() {
+		return UserID;
+	}
+	public void setUserID(String userID) {
+		UserID = userID;
+	}
+	public String getItemContent() {
+		return itemContent;
+	}
+
+	public void setItemContent(String itemContent) {
+		this.itemContent = itemContent;
+	}
 	public int getItemUID() {
 		return itemUID;
 	}

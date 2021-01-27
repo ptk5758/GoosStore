@@ -7,6 +7,7 @@
 	console.log("gdgd");
 	
 	let viewimg = (event) => {
+		console.log(event);
 		console.log(event.target.files[0].type);
 		let type = event.target.files[0].type.split("/");
 		
@@ -25,6 +26,69 @@
 		};
 		reader.readAsDataURL(event.target.files[0]);
 	}
+	
+	$(function(){
+		$('.posting_border_left').on("dragover",(event)=>{
+			event.preventDefault();
+			console.log("drag");
+			/*$('.posting_border_left').css("border","5px solid blue");*/
+		});
+		$('.posting_border_left').on("drop",function(event){
+			event.preventDefault();
+			let files = event.originalEvent.dataTransfer.files;
+			let fileElement = document.getElementById('mainimg');
+			fileElement.files = files;
+		});
+	})
+	
+	let postingdo = () => {
+		let myform = document.getElementById('itemform');
+		let formData = new FormData(myform);
+		let xhp = new XMLHttpRequest();
+		let img = document.getElementById('mainimg');
+		let imgs = document.getElementById('imgs');
+		let inputcontent = document.getElementById('inputcontent').value;
+		formData.append("itemContent", inputcontent);
+		formData.append("mainimg",img.files[0]);
+		for(let file of imgs.files){
+			formData.append("imgs", file);
+		}
+		xhp.open("POST","/shop/posting",true);
+		xhp.send(formData);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*$(document).ready(function(){
 		$('.posting').on("dragover",(event)=>{

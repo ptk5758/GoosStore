@@ -41,7 +41,10 @@ public class ShopDAOCon implements ShopDAO{
 	@Override
 	public void modifySeller(SellerVO seller) {
 		sqlSession.update(NAMESPACE+".modifySeller", seller);
-		
+	}
+	@Override
+	public void itemInsert(ShopVO shop) {
+		sqlSession.insert(NAMESPACE+".itemInsert", shop);
 	}
 
 }

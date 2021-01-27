@@ -8,6 +8,10 @@
 	src: url("/font/nexon/nexon_gothicotfbold.woff");
 	font-weight: bold;
 }
+form{
+	margin: 0;
+	padding: 0;
+}
 /*-----------------------------------------------  */
 .shopcontainer{
 	margin-top: 25px;
@@ -170,6 +174,7 @@
 }
 .posting_border_right{
 	width: 73%;
+	
 	border: 1px solid#000000;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -227,4 +232,5 @@
 	background-color: #000000;
 	border: 1px solid#fff;
 	border-radius: 15px;
+	cursor: pointer;
 }

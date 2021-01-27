@@ -58,7 +58,8 @@ public class ShopController {
 	}
 	
 	@RequestMapping(value = "/shopPosting", method = RequestMethod.GET)
-	public String shopPostingPage() {
+	public String shopPostingPage(Model model, HttpSession session) {
+		model.addAttribute("user", dao.getSellerOne((String)session.getAttribute("sessionID")));
 		return "/shop/shopPosting";
 	}
 	
@@ -145,6 +146,22 @@ public class ShopController {
 		}
 		logger.info(result);
 		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/posting", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public String insertItem(ShopVO shop, @RequestParam("mainimg")MultipartFile mainimg, @RequestParam("imgs") MultipartFile[] imgs) throws IOException, Exception {
+		shop.setImg_m(uploadFile(mainimg.getOriginalFilename(), mainimg.getBytes()));
+		int i=0;
+		for(MultipartFile file : imgs) {
+			if(i==0) {shop.setImg_1(uploadFile(file.getOriginalFilename(), file.getBytes()));}
+			if(i==1) {shop.setImg_2(uploadFile(file.getOriginalFilename(), file.getBytes()));}
+			if(i==2) {shop.setImg_3(uploadFile(file.getOriginalFilename(), file.getBytes()));}
+			i++;
+		}
+		dao.itemInsert(shop);
+		logger.info(shop.toString());
+		return  "성공";
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

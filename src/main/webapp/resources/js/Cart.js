@@ -44,3 +44,7 @@
 		}
 		document.getElementById('cartCount').innerHTML = parseInt(x)+value;
 	}
+	
+	let start = () => {
+		console.log("start");
+	}

@@ -33,4 +33,7 @@
 	<select id="getViewItem" resultType="ShopVO">
 		select * from shop where userID = #{sellerID} and itemUID = #{itemUID}
 	</select>
+	<select id="getItemINFO" resultType="ShopVO">
+		select * from shop where itemUID = #{itemUID}
+	</select>
 </mapper>

@@ -12,5 +12,8 @@
 	<update id="addCart">
 		update cart set itemCount = itemCount+#{itemCount} where userID=#{userID}
 	</update>
+	<select id="getCartList" resultType="CartVO">
+		select * from cart where userID=#{userID}
+	</select>
 	
 </mapper>

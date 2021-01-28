@@ -66,5 +66,10 @@ public class ShopDAOCon implements ShopDAO{
 	public ShopVO getViewItemVO(Map<String, Object> map) {
 		return sqlSession.selectOne(NAMESPACE+".getViewItem", map);
 	}
+	
+	@Override
+	public ShopVO getCartShopList(Integer itemUID) {
+		return sqlSession.selectOne(NAMESPACE+".getItemINFO", itemUID);
+	}
 
 }

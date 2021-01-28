@@ -51,10 +51,12 @@
 				</div>
 			</div>
 		</div>
-		<div class="index_slide_Text">
-		
-		</div>
 	</div>
+		<c:if test="${sessionID != null }">
+			<script>
+				sessionStorage.setItem("sessionID", '${sessionID}');
+			</script>
+		</c:if>
 		<script>
 			var welcome = "${msg}";
 			if(welcome != ''){

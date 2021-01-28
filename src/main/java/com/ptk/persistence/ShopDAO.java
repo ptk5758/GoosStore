@@ -19,4 +19,12 @@ public interface ShopDAO {
 	public void addCategory(String category);
 	public List<ShopVO> getSellerItemList(String sellerID);
 	public ShopVO getViewItemVO(Map<String, Object> map);
+	
+	/**
+	 * 
+	 * ## shopVO 를 가져오는 메서드 
+	 * @param 아이템 유니크 아이디
+	 * 
+	 */
+	public ShopVO getCartShopList(Integer itemUID);
 }

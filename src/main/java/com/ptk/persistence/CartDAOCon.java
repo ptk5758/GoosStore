@@ -1,5 +1,7 @@
 package com.ptk.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,8 +29,12 @@ public class CartDAOCon implements CartDAO{
 	
 	@Override
 	public void addCart(CartVO cart) {
-		sqlSession.update(NAMESPACE+".addCart", cart);
-		
+		sqlSession.update(NAMESPACE+".addCart", cart);	
+	}
+	
+	@Override
+	public List<CartVO> getCartList(String userID) {
+		return sqlSession.selectList(NAMESPACE+".getCartList", userID);
 	}
 
 

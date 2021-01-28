@@ -5,4 +5,5 @@
 	<div>
 		<h1>장바구니</h1>
 	</div>
+<script src="/js/MyCart.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

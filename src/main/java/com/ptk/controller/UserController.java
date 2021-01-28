@@ -31,7 +31,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPOST(UserVO user, HttpSession session, HttpServletRequest request) {
+	public String loginPOST(UserVO user, HttpSession session, HttpServletRequest request, RedirectAttributes rttr) {
 		logger.info("로그인 시도");
 		try {
 			user = dao.login(user);
@@ -41,6 +41,7 @@ public class UserController {
 			session.setAttribute("sessionName", user.getUserName());
 			session.setAttribute("sessionNickName", user.getUserNickName());
 			session.setAttribute("sessionSeller", user.isSeller());
+			rttr.addFlashAttribute("msg","로그인 되었습니다.");
 			return "redirect: /";
 		} catch (Exception e) {
 			logger.info("로그인에 실패하였습니다.");

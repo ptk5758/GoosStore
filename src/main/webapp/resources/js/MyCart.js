@@ -59,7 +59,7 @@
 		});
 	});*/
 	
-	/*let sessionID = sessionStorage.getItem("sessionID");
+	let sessionID = sessionStorage.getItem("sessionID");
 	
 	//장바구니를 가져오는 함수
 	let promise = new Promise((resolve, reject)=>{
@@ -74,28 +74,8 @@
 	});
 	
 	promise.then((res) => {
-		let list = res.list;
-		let itemUID = new Array();
-		let formData = new FormData();
-		
-		for(let i=0; i<list.length; i++){
-			itemUID[i] = list[i].itemuid;
-			//formData.append("itemUID", itemUID[i]);
-			//8,7,6
-		}
-		formData.append("test", "test");
-
-		let xhp = new XMLHttpRequest();
-		xhp.open("GET", "/Shopapi/GetShopItemList", true);
-		xhp.send(formData);
-		
-		xhp.onreadystatechange = () => {
-			if(xhp.readyState === 4 && xhp.status === 200){
-				console.log(xhp.responseText);
-			}
-		}
-		
-	});*/
+		console.log(res);
+	});
 	
 	
 	

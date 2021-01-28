@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ptk.domain.CartVO;
 import com.ptk.persistence.CartDAO;
+import com.ptk.persistence.ShopDAO;
 
 @RestController
 @RequestMapping(value = "/Cartapi")
@@ -22,6 +23,8 @@ public class CartAPI {
 	
 	@Inject
 	private CartDAO dao;
+	@Inject
+	private ShopDAO shopdao;
 	
 	@RequestMapping(value = "/ListGet", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
 	public String cartListGet(@RequestParam("userID") String userID) {
@@ -35,6 +38,7 @@ public class CartAPI {
 			result += "\"itemcount\":\""+cart.getItemCount()+"\",";
 			result += "\"itemuid\":\""+cart.getItemUID()+"\",";
 			result += "\"userid\":\""+cart.getUserID()+"\",";
+			result += "\"shopItem\":["+shopdao.getCartShopList(cart.getItemUID()).toString()+"],";//요거
 			result += "\"cartdate\":\""+cart.getCartDate()+"\"}";
 			if(i+1 == list.size()) {
 				result += "]}";
@@ -47,3 +51,4 @@ public class CartAPI {
 	}
 
 }
+

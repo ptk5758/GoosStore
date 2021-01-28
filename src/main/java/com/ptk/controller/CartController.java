@@ -37,7 +37,13 @@ public class CartController {
 		if(session.getAttribute("sessionID") == null) {
 			result = "{\"msg\":\"실패\",\"comment\":\"로그인 후에 이용가능합니다.\"}";			
 		} else {
-			dao.insertCart(cart);
+			logger.info(cart.toString());
+			logger.info(dao.checkCart(cart)+"<<<<<<<<<<<<<<<<<<");
+			if(dao.checkCart(cart)) {
+				dao.addCart(cart);				
+			} else {
+				dao.insertCart(cart);				
+			}
 			result = "{\"msg\":\"성공\"}";
 		} 
 		return  result;

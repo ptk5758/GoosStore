@@ -19,6 +19,17 @@ public class CartDAOCon implements CartDAO{
 	public void insertCart(CartVO cart) {
 		sqlSession.insert(NAMESPACE+".insertCart", cart);
 	}
+	
+	@Override
+	public boolean checkCart(CartVO cart) {
+		return sqlSession.selectOne(NAMESPACE+".checkCart", cart);
+	}
+	
+	@Override
+	public void addCart(CartVO cart) {
+		sqlSession.update(NAMESPACE+".addCart", cart);
+		
+	}
 
 
 }

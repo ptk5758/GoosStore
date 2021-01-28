@@ -6,5 +6,11 @@
 	<insert id="insertCart">
 		insert into cart (itemUID,itemCount,userID) values (#{itemUID},#{itemCount},#{userID})
 	</insert>
+	<select id="checkCart" resultType="boolean">
+		select if(count(*),1,0) as result from cart where itemUID=#{itemUID} and userID=#{userID}
+	</select>
+	<update id="addCart">
+		update cart set itemCount = itemCount+#{itemCount} where userID=#{userID}
+	</update>
 	
 </mapper>

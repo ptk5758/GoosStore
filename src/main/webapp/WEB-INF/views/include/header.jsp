@@ -23,6 +23,7 @@
 					<div class="top_Signup_Item">Lv.${sessionLevel }${sessionName }님</div>
 					<div class="top_Signup_Item" onclick="location.href='/user/logout'">로그아웃</div>
 					<div class="top_Signup_Item" onclick="location.href='/user/mypage?sessionID=${sessionID}'">마이페이지</div>
+					<div class="top_Signup_Item" onclick="location.href='/Cart/${sessionID}'">장바구니</div>
 				</c:if>
 			</div>
 			

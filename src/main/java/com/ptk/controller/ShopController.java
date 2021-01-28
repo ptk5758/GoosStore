@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
 import com.ptk.domain.UserVO;
+import com.ptk.persistence.CartDAO;
 import com.ptk.persistence.ShopDAO;
 import com.ptk.persistence.UserDAO;
 

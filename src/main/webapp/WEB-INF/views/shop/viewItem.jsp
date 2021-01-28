@@ -39,8 +39,16 @@
 			</div>
 		</div>
 		<div class="submitButton" id="submitButton">
-			<div><button>장바구니</button></div>
+			<div class="cartCount">
+				<div class="cartCount_Num" id="cartCount">1</div>
+				<div class="cartCount_button">
+					<div onclick="cartCount(1)">증</div>
+					<div onclick="cartCount(-1)">감</div>
+				</div>
+			</div>
+			<div id="BTS" style="align-self: center;"><button onclick="cartIn('${item.itemUID}','${sessionID}')">장바구니</button></div>
 		</div>
 	</div>
 <script src="/js/shopPosting.js?ver=1"></script>
+<script src="/js/Cart.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

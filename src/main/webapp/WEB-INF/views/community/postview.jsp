@@ -15,7 +15,7 @@
 			<div class="divTableCell"><p class="">${detail.postContent}</p></div>
 		</div>
 		<div class="divTableRow">
-			<div class="divTableCell">이미지:<img src="/upload/${detail.postImage}" width="500" height="700"></div>
+			<div class="divTableCell">이미지:<img src="/6/${detail.postImage}" width="500" height="700"></div>
 		</div>	
 	</div>
 </div>

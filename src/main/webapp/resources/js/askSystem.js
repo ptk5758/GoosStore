@@ -52,6 +52,7 @@
 				alert("접수가 완료되었습니다.");
 				getAskList();
 				$('#sendButton').css("pointer-events","none");
+				$('#sendButton').html(`<input type="button" value="전송 완료">`);
 				
 			} else {
 				alert("약관에 동의해주시길 바랍니다.");

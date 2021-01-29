@@ -26,8 +26,8 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-	<beans:constructor-arg value="C:\jsp\stringproject\src\main\webapp\resources\6"></beans:constructor-arg>
-		<!-- <beans:constructor-arg value="/ptk57581/tomcat/webapps/ROOT/resources/6"></beans:constructor-arg> -->
+		<!-- <beans:constructor-arg value="C:\jsp\stringproject\src\main\webapp\resources\6"></beans:constructor-arg> -->
+		<beans:constructor-arg value="/ptk57581/tomcat/webapps/ROOT/resources/6"></beans:constructor-arg>
 		<!-- <beans:constructor-arg value="/ptk57581/tomcat/webapps/ROOT/resources/6"></beans:constructor-arg> 웹호스팅 경로-->
 	</beans:bean>
 	

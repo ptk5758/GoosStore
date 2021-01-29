@@ -158,7 +158,7 @@ public class ShopController {
 			SellerVO vo = list.get(i);
 			result += "{\"name\":\""+vo.getName()+"\",";
 			result += "\"ID\":\""+vo.getSellerID()+"\",";
-			result += "\"img\":\"http://localhost:8080/6/"+vo.getImg()+"\",";
+			result += "\"img\":\"http://freeptk.shop/6/"+vo.getImg()+"\",";
 			result += "\"postcod\":\""+vo.getPostcod()+"\",";
 			result += "\"address1\":\""+vo.getAddr1()+"\",";
 			result += "\"address2\":\""+vo.getAddr2()+"\",";

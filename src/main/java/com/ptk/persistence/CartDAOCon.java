@@ -36,6 +36,11 @@ public class CartDAOCon implements CartDAO{
 	public List<CartVO> getCartList(String userID) {
 		return sqlSession.selectList(NAMESPACE+".getCartList", userID);
 	}
+	
+	@Override
+	public void deleteCartItem(Integer cartUID) {
+		sqlSession.delete(NAMESPACE+".deleteCartItem", cartUID);
+	}
 
 
 }

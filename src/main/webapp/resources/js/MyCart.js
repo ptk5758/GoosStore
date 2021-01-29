@@ -4,7 +4,9 @@
 	
 	let sessionID = sessionStorage.getItem("sessionID");
 	
-	if(sessionID != null || sessionID === ""){
+	let cartpageload = () => {
+		
+		if(sessionID != null || sessionID === ""){
 		//장바구니를 가져오는 함수
 		let promise = new Promise((resolve, reject)=>{
 			let xhp = new XMLHttpRequest();
@@ -22,7 +24,17 @@
 			let cart = document.getElementById('myCart');
 			let num = res.count;
 			let list = res.list;
-			let result = "";
+			let result = `
+				<div class="Cart_Border">
+					<div class="Cart_Item">
+						<div class="Cart_Num Cart_Top">번호</div>
+						<div class="Cart_Thum Cart_Top">썸네일</div>
+						<div class="Cart_Subject Cart_Top">상품이름</div>
+						<div class="Cart_Price Cart_Top">가격</div>
+						<div class="Cart_TotalPrice Cart_Top">총가격</div>
+						<div class="Cart_Check Cart_Top">체크</div>
+					</div>
+			`;
 			for(let item of list){
 				let shopitem = item.shopItem[0];
 				result += `
@@ -34,12 +46,19 @@
 						<div class="Cart_TotalPrice">${shopitem.itemPrice} 원 X ${item.itemcount} 개 = ${shopitem.itemPrice * item.itemcount} 원</div>
 						<div class="Cart_Check"><input id="check" type="checkbox" value="${shopitem.itemPrice * item.itemcount}" onchange="itemCheck()" data-uid="${item.cartuid}"></div>
 					</div>
-				`;
+				`;-
 				num--;
 			}
-			cart.innerHTML += result;
+			result += `</div>`;
+			cart.innerHTML = result;
 		});
 	}
+	
+	
+	
+	}
+	
+	
 	// x:y x 가 y 인것
 	// ex input:checkbox 인푸시 checkbox 인것 : checked : 중에 checked 인것
 	let itemCheck = () => {
@@ -64,25 +83,25 @@
 				resultArray.push(item.getAttribute('data-uid'));
 			}
 			
-			let promise = new Promise((resolve, reject) => {
+			let promise2 = new Promise((resolve, reject) => {
 				resolve(resultArray);
 			})
 			
-			promise.then((res) => {
+			promise2.then((res) => {
 				
 				for(let item of res){
 					let requestData = {cartUID:item, userID:sessionStorage.getItem('sessionID')};
 					let xhp = new XMLHttpRequest();
-					xhp.open();
-					xhp.send(requestData);
-					console.log(requestData);
-				}				
+					xhp.open("DELETE", "/Cartapi/ListDelete/"+item, true);
+					xhp.send(null);
+				}
+				alert("성공");
+				cartpageload();
 			});
 		});		
 	}
 	
-	
-	
+	cartpageload();
 	
 	
 	

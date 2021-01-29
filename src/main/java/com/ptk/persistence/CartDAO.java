@@ -10,5 +10,5 @@ public interface CartDAO {
 	public boolean checkCart(CartVO cart);
 	public void addCart(CartVO cart);
 	public List<CartVO> getCartList(String userID);
-	
+	public void deleteCartItem(Integer cartUID);
 }

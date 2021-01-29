@@ -15,5 +15,8 @@
 	<select id="getCartList" resultType="CartVO">
 		select * from cart where userID=#{userID}
 	</select>
+	<delete id="deleteCartItem">
+		delete from cart where cartUID=#{cartUID}
+	</delete>
 	
 </mapper>

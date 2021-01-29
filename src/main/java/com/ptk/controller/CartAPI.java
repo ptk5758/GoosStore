@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,6 @@ public class CartAPI {
 	public String cartListGet(@RequestParam("userID") String userID) {
 		String result;
 		List<CartVO> list = dao.getCartList(userID);
-		logger.info(list.size()+"<<<<<<<<<<<<<<<<");
 		result = "{\"count\":\""+list.size()+"\",\"list\":[";
 		for(int i=0; i<list.size(); i++) {
 			CartVO cart = list.get(i);
@@ -47,6 +47,15 @@ public class CartAPI {
 			}
 		}
 		//logger.info(result);
+		return result;
+	}
+	
+	@RequestMapping(value = "/ListDelete/{cartUID}", method = RequestMethod.DELETE, produces = "application/json; charset=UTF-8")
+	public String cartListDelete(@PathVariable("cartUID")Integer cartUID) {
+		String result;
+		result = "{\"msg\":\"성공\"}";
+		logger.info(cartUID+"<<<<<<<<<<<<<<<<<<");
+		dao.deleteCartItem(cartUID);
 		return result;
 	}
 

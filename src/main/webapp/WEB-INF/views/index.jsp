@@ -54,6 +54,7 @@
 	</div>
 		<c:if test="${sessionID != null }">
 			<script>
+				sessionStorage.setItem("sessionNickName", '${sessionNickName}');
 				sessionStorage.setItem("sessionID", '${sessionID}');
 			</script>
 		</c:if>

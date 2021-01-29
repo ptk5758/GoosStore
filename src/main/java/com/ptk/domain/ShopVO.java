@@ -39,7 +39,7 @@ public class ShopVO {
 		result += "\"itemContent\":\""+this.itemContent+"\",";		
 		result += "\"itemRef\":\""+this.itemRef+"\",";
 		result += "\"itemCount\":\""+this.itemCount+"\",";
-		result += "\"img_m\":\""+this.img_m+"\",";
+		result += "\"img_m\":\"http://localhost:8080/6/"+this.img_m+"\",";
 		result += "\"img_1\":\""+this.img_1+"\",";
 		result += "\"img_2\":\""+this.img_2+"\",";
 		result += "\"img_3\":\""+this.img_3+"\"";

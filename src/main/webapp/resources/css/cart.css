@@ -1,1 +1,102 @@
 @charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.myCart{
+	display: flex;
+	flex-direction: column;
+}
+.Cart_Border{
+	display: flex;
+	flex-direction: column;
+	border: 0px solid#000000;
+}
+.Cart_Item{
+	display: flex;
+	justify-content: center;
+	padding: 5px;
+	align-items: center;
+	border: 0px solid#000000;
+	border-bottom: 2px solid#acacac;
+	margin: 5px;
+}
+.Cart_Top{
+	font-size: 18px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	background-color: #94cdfc;
+	color: #fff;
+	height: 35px;
+}
+.Cart_Item > div {
+	text-align: center;
+	padding: 3px;
+	/* border: 1px solid#acacac; */
+}
+.Cart_Num{
+	width: 5%;
+	font-size: 18px;
+	font-weight: bold;
+}
+.Cart_Thum{
+	width: 20%;
+	
+}
+.Cart_Thum img{
+	max-width: 150px;
+	height: 150px;
+}
+.Cart_Subject{
+	width: 25%;
+	font-weight: bold;
+}
+.Cart_Price{
+	width: 20%;
+	font-family: "Roboto";
+}
+.Cart_TotalPrice{
+	width: 20%;
+	font-family: "Roboto";
+}
+.Cart_Check{
+	width: 5%;
+	
+}
+.Cart_Check input{
+	height: 22px;
+	width: 22px;
+}
+.CartButton{
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	
+}
+.cartButtonText{
+	font-family: "넥슨고딕";
+	font-size: 20px;
+	font-weight: bold;
+}
+#totalPrice{
+	font-family: "넥슨고딕";
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 25px;
+	width: 200px;
+	text-align: right;
+}
+.paybutton{
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+.paybutton button{
+	padding: 5px;
+	width: 180px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	background-color: #000000;
+	cursor: pointer;
+}
+

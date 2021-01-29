@@ -8,9 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ptk.domain.UserVO;
@@ -99,6 +101,25 @@ public class UserController {
 	public void mypageGET(@RequestParam("sessionID") String sessionID, Model model) {
 		model.addAttribute("userVO", dao.getUser(sessionID));
 	}
+	
+	@RequestMapping(value = "/userModify", method = RequestMethod.GET)
+	public String userModifyPage(HttpSession session, Model model) {
+		UserVO user = dao.getUser((String)session.getAttribute("sessionID"));
+		model.addAttribute("userInfo", user);
+		return "/user/userModify";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/userModify", method = RequestMethod.POST, produces = "application/text; charset=UTF-8")
+	public String userModifyAPI(UserVO user) {
+		
+		
+		logger.info("성공");
+		logger.info(user.toString());
+		
+		return "{\"msg\":\"성공\"}";
+	}
+	
 	
 	
 	

@@ -35,7 +35,7 @@
 						<div class="myInfo_value">${userVO.userSignUpDate }</div>
 					</div>
 					<div class="myPage_Info_Item">
-						<div><button>회원수정하기</button></div>
+						<div><button onclick="location.href='/user/userModify'">회원수정하기</button></div>
 					</div>
 				</div>
 			</div>

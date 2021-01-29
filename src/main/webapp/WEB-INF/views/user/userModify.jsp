@@ -6,27 +6,28 @@
 			<div class="myPage_UserName">수정페이지</div>
 			<div class="myPage_Border">
 				<div class="myPage_Info">
-				<form method="post">
+				<form id="userForm">
 					<div class="myPage_Info_Item">
 						<div class="myInfo_Text">닉네임</div>
-						<div class="myInfo_value"><input name="userNickName" value="${userInfo.userNickName}"></div>
+						<div class="myInfo_value"><input id="userNickName" value="${userInfo.userNickName}"></div>
 					</div>
 					<div class="myPage_Info_Item">
 						<div class="myInfo_Text">이메일</div>
-						<div class="myInfo_value"><input name="userEmail" value="${userInfo.userEmail }"></div>
+						<div class="myInfo_value"><input id="userEmail" value="${userInfo.userEmail }"></div>
 					</div>
 					<div class="myPage_Info_Item">
 						<div class="myInfo_Text">전화번호</div>
-						<div class="myInfo_value"><input name="userPhone" value="${userInfo.userPhone }"></div>
+						<div class="myInfo_value"><input id="userPhone" value="${userInfo.userPhone }"></div>
 					</div>
 					<div class="myPage_Info_Item">
-						<input type="submit" value="수정">
+						<input type="button" value="수정" onclick="userModify()">
 						<input type="hidden" name="userUUID" value="${userInfo.userUUID}">
 					</div>
 				</form>
 				</div>
 			</div>
 		</div>
+<script src="/js/userSystem.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
 		
 

@@ -34,7 +34,7 @@
 			<div class="viewItemINFO">
 				<c:if test="${item.img_1 != null}"><div style="display: flex; justify-content: center;"><img src="/6/${item.img_1 }"></div></c:if>
 				<c:if test="${item.img_2 != null}"><div style="display: flex; justify-content: center;"><img src="/6/${item.img_2 }"></div></c:if>
-				<c:if test="${item.img_2 != null}"><div style="display: flex; justify-content: center;"><img src="/6/${item.img_2 }"></div></c:if>
+				<c:if test="${item.img_3 != null}"><div style="display: flex; justify-content: center;"><img src="/6/${item.img_3 }"></div></c:if>
 				<div>${item.itemContent }</div>
 			</div>
 		</div>

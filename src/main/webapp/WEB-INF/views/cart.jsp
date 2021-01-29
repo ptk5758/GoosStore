@@ -18,6 +18,9 @@
 		<div class="cartButtonText">총가격</div>
 		<div id="totalPrice">0 원</div>
 	</div>
-	<div class="paybutton"><button onclick="alert('미구현')">구매</button></div>
+	<div class="paybutton">
+		<button onclick="deleteCartItem()" style="background-color: red">빼기</button>
+		<button onclick="alert('미구현')">구매</button>
+	</div>
 <script src="/js/MyCart.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

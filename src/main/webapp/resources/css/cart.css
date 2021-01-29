@@ -92,6 +92,7 @@
 }
 .paybutton button{
 	padding: 5px;
+	margin: 15px;
 	width: 180px;
 	font-size: 22px;
 	font-weight: bold;

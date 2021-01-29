@@ -54,7 +54,32 @@
 		})
 	}
 	
-	
+	let deleteCartItem = () => {
+		$(function(){
+			
+			let checkboxs = $('input:checkbox[id="check"]:checked');
+			let resultArray = new Array();
+			
+			for(let item of checkboxs){
+				resultArray.push(item.getAttribute('data-uid'));
+			}
+			
+			let promise = new Promise((resolve, reject) => {
+				resolve(resultArray);
+			})
+			
+			promise.then((res) => {
+				
+				for(let item of res){
+					let requestData = {cartUID:item, userID:sessionStorage.getItem('sessionID')};
+					let xhp = new XMLHttpRequest();
+					xhp.open();
+					xhp.send(requestData);
+					console.log(requestData);
+				}				
+			});
+		});		
+	}
 	
 	
 	

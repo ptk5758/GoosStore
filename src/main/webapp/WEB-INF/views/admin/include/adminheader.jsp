@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="top">
-			<div class="top_Title" onclick="location.href='/'">업적보라</div>
+			<div class="top_Title" onclick="location.href='/'">QWER</div>
 			<div class="top_Signup">
 				<c:if test="${sessionID == null }">
 					<div class="top_Signup_Item" onclick="location.href='/user/login'">로그인</div>

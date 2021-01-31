@@ -75,11 +75,13 @@
 		let userNickName = document.getElementById('userNickName').value;
 		let userEmail = document.getElementById('userEmail').value;
 		let userPhone = document.getElementById('userPhone').value;
+		let userID = document.getElementById('userID').value;
 		
 		let formData = new FormData();
 		formData.set("userPhone", userPhone);
 		formData.set("userEmail", userEmail);
 		formData.set("userNickName", userNickName);
+		formData.set("userID", userID);
 		let xhp = new XMLHttpRequest();
 		xhp.open("POST", "/user/userModify", true);
 		xhp.send(formData);

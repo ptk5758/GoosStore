@@ -1,7 +1,6 @@
 /**
  * 
  */
-	console.log("관리자님 환영합니다.");
 	
 	let getAskList = function (){
 		console.log("질문답변 리스트 가져오기");
@@ -221,7 +220,6 @@
 			}
 		}
 	}
-	console.log("hdfkasjhokfldsjlkdjf");
 	
 	
 	

@@ -7,6 +7,7 @@
 			<div class="myPage_Border">
 				<div class="myPage_Info">
 				<form id="userForm">
+					<input type="hidden" id="userID" value="${userInfo.userID }">
 					<div class="myPage_Info_Item">
 						<div class="myInfo_Text">닉네임</div>
 						<div class="myInfo_value"><input id="userNickName" value="${userInfo.userNickName}"></div>

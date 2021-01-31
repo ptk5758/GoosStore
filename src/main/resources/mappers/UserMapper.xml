@@ -33,4 +33,7 @@
 	<update id="updateSeller">
 		update user set seller=1 where userID=#{sellerID}
 	</update>
+	<update id="updateUser">
+		update user set userNickName=#{userNickName}, userEmail=#{userEmail}, userPhone=#{userPhone} where userID=#{userID}
+	</update>
 </mapper>

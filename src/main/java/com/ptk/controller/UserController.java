@@ -116,13 +116,10 @@ public class UserController {
 		
 		logger.info("성공");
 		logger.info(user.toString());
-		
+		dao.updateUser(user);
 		return "{\"msg\":\"성공\"}";
 	}
 	
-	
-	
-	
+		
 
 }
-

@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -27,6 +28,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import com.ptk.domain.SellerVO;
 import com.ptk.domain.ShopVO;
 import com.ptk.domain.UserVO;
@@ -190,6 +193,15 @@ public class ShopController {
 		dao.itemInsert(shop);
 		logger.info(shop.toString());
 		return  "{\"msg\":\"성공\"}";
+	}
+	
+	@RequestMapping(value = "/myShop", method = RequestMethod.GET)
+	public String myShopPage(HttpSession session) {
+		
+		if(session.getAttribute("sessionID") == null) {
+			return "/";
+		}
+		return "/shop/myShop";
 	}
 	
 	private String uploadFile(String originalName, byte[] fileData) throws Exception {

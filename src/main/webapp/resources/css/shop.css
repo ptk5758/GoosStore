@@ -380,3 +380,63 @@ form{
 	font-weight: bold;
 	letter-spacing: 8px;
 }
+/* ----------------------나의 상품------------------------- */
+.MyShopBenner{
+	background-color: #cefdf4;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: "넥슨고딕";
+	padding: 1.3em;
+}
+.MyShop{
+	width: 100%;
+	margin: 0 auto;
+	background-color: #eeeeee;
+	display: flex;
+	flex-direction: column;
+}
+.MyShop_Item{
+	display: flex;
+	justify-content: center;
+	margin: 15px;
+	padding: 8px;
+	font-size: 18px;
+	align-items: center;
+}
+.Cart_Top{
+	font-weight: bold;
+}
+.MyShop_Item:nth-child(odd){
+	background-color: #fff;
+}
+.MyShop_Item > div {
+	text-align: center;
+}
+.MyShop_Item_Num{
+	width: 80px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.MyShop_Item_Thum{
+	width: 250px;
+}
+.MyShop_Item_Thum img {
+	width: 180px;
+	height: 180px;
+}
+.Cart_Thum img{
+	max-width: 150px;
+	height: 150px;
+}
+.MyShop_Item_Name{
+	width: 200px;
+	font-weight: bold;
+}
+.MyShop_Item_Price{
+	width: 200px;
+}
+.MyShop_Item_Date{
+	width: 200px; 
+}
+
+ 

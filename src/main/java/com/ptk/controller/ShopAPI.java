@@ -23,12 +23,22 @@ public class ShopAPI {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ShopAPI.class);
 	
-	@RequestMapping(value = "/GetShopItemList", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
-	public String getShopItem() {
-		String result;
+	@RequestMapping(value = "/GetShopItemList", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
+	public String getShopItem(@RequestParam("userID") String userID) {
+		String result;		
 		
-		
-		result = "{\"msg\":\"성공\"}";
+		List<ShopVO> list = dao.getSellerItemList(userID);
+		result = "{\"count\":\""+list.size()+"\",\"list\":[";
+		for(int i=0; i<list.size(); i++) {
+			ShopVO shop = list.get(i);
+			result += shop.toString();
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+		}
+		logger.info(result);
 		return result;
 	}
 

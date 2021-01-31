@@ -71,7 +71,11 @@ public class UserDAOCon implements UserDAO{
 	
 	@Override
 	public void updateSeller(SellerVO seller) {
-		sqlSession.update(NAMESPACE+".updateSeller", seller);
-		
+		sqlSession.update(NAMESPACE+".updateSeller", seller);		
+	}
+	
+	@Override
+	public void updateUser(UserVO user) {
+		sqlSession.update(NAMESPACE+".updateUser", user);		
 	}
 }

@@ -7,7 +7,7 @@
 			<div class="adminMenu">
 				<div class="adminMenu_Item" onclick="getUserList()">유저관리</div>
 				<div class="adminMenu_Item" onclick="getAskList()">질문답변</div>
-				<div class="adminMenu_Item">굿즈샵관리</div>
+				<div class="adminMenu_Item" onclick="getShopList()">굿즈샵관리</div>
 				<div class="adminMenu_Item">4</div>
 				<div class="adminMenu_Item">5</div>
 			</div>
@@ -23,6 +23,7 @@
 		</script>
 		<script src="/js/AdminAsk.js?ver=1"></script>
 		<script src="/js/AdminUser.js?ver=1"></script>
+		<script src="/js/AdminShopList.js?ver=1"></script>
 <%@ include file="/WEB-INF/views/admin/include/adminfooter.jsp"%>
 		
 

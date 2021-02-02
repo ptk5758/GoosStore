@@ -41,5 +41,24 @@ public class ShopAPI {
 		logger.info(result);
 		return result;
 	}
+	
+	@RequestMapping(value = "/GetShopList", method = RequestMethod.GET, produces = "application/text; charset=UTF-8")
+	public String getShopList() {
+		String result;
+		
+		List<ShopVO> list = dao.getShopList();
+		result = "{\"count\":\""+list.size()+"\",\"list\":[";
+		for (int i = 0; i < list.size(); i++) {
+			ShopVO shop = list.get(i);
+			result += shop.toString();
+			if(i+1 == list.size()) {
+				result += "]}";
+			} else {
+				result += ",";
+			}
+		}
+		logger.info(result);
+		return result;
+	}
 
 }

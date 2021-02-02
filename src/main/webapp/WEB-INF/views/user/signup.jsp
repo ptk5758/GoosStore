@@ -32,12 +32,6 @@
 					</div>
 				</div>
 				<div class="signupItem">
-					<div class="signupText">스팀 아이디</div>
-					<div class="signupInput">
-						<div><input placeholder="Steam_ID" name="userSteamID"></div>
-					</div>
-				</div>
-				<div class="signupItem">
 					<div class="signupText">이메일주소</div>
 					<div class="signupInput">
 						<div><input placeholder="Email_Address" name="userEmail"></div>

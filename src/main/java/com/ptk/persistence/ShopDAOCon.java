@@ -71,5 +71,10 @@ public class ShopDAOCon implements ShopDAO{
 	public ShopVO getCartShopList(Integer itemUID) {
 		return sqlSession.selectOne(NAMESPACE+".getItemINFO", itemUID);
 	}
+	
+	@Override
+	public List<ShopVO> getShopList() {
+		return sqlSession.selectList(NAMESPACE+".getShopList");
+	}
 
 }

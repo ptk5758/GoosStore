@@ -19,6 +19,7 @@ public interface ShopDAO {
 	public void addCategory(String category);
 	public List<ShopVO> getSellerItemList(String sellerID);
 	public ShopVO getViewItemVO(Map<String, Object> map);
+	public List<ShopVO> getShopList();
 	
 	/**
 	 * 

@@ -13,7 +13,7 @@
 			<div class="seller_ItemBorder_Item" data-uid="${item.itemUID }" onclick="viewItem(this,'${seller.sellerID}')">
 				<div class="seller_ItemBorder_Item_img"><img src="/6/${item.img_m }"></div>
 				<div class="seller_ItemBorder_Item_Name">${item.itemName }</div>
-				<div class="seller_ItemBorder_Item_Price">${item.itemPrice }</div>
+				<div class="seller_ItemBorder_Item_Price">${item.itemPrice } 원</div>
 			</div>
 			</c:forEach>
 		</div>

@@ -1,5 +1,6 @@
 package com.ptk.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ShopVO {
@@ -27,6 +28,8 @@ public class ShopVO {
 
 	@Override
 	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String formatDate = sdf.format(this.signdate);
 		String result;
 		result = "{";
 		result += "\"itemUID\":\""+this.itemUID+"\",";
@@ -35,7 +38,7 @@ public class ShopVO {
 		result += "\"itemMidCategory\":\""+this.itemMidCategory+"\",";
 		result += "\"itemPrice\":\""+this.itemPrice+"\",";
 		result += "\"user\":\""+this.User+"\",";
-		result += "\"signdate\":\""+this.signdate+"\",";
+		result += "\"signdate\":\""+formatDate+"\",";
 		result += "\"itemContent\":\""+this.itemContent+"\",";		
 		result += "\"itemRef\":\""+this.itemRef+"\",";
 		result += "\"itemCount\":\""+this.itemCount+"\",";
